@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { NamedApiResource } from '../../models/NamedApiResource';
-import { baseSliceInitialState, BaseSliceState } from '../BaseSliceState';
+import { NamedApiResource } from '../../models/named-api-resource';
+import { baseSliceInitialState, BaseSliceState } from '../base-slice-state';
 
 interface RegionState extends BaseSliceState {
 	results: NamedApiResource[];

@@ -1,10 +1,10 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { all, call, fork, put, take } from 'redux-saga/effects';
-import { NamedApiResourceList } from '../../models/NamedApiResourceList';
-import { Pokemon } from '../../models/Pokemon';
-import { pokemonServices } from '../../services/PokemonServices';
-import { appSelect } from '../Hook';
-import { pokemonActions } from '../reducers/PokemonSlice';
+import { NamedApiResourceList } from '../../models/named-api-resource-list';
+import { Pokemon } from '../../models/pokemon';
+import { pokemonServices } from '../../services/pokemon-service';
+import { appSelect } from '../hooks';
+import { pokemonActions } from '../reducers/pokemon-slice';
 function* getPokemonDetail(id: string) {
 	try {
 		const pokemon: Pokemon = yield call(pokemonServices.getPokemon, id);

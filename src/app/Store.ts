@@ -4,8 +4,8 @@ import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
-import { rootReducer, RootReducer } from './reducers/RootReducer';
-import rootSaga from './saga/RootSaga';
+import { rootReducer, RootReducer } from './reducers/root-reducer';
+import rootSaga from './saga/root-saga';
 
 const sagaMiddleware = createSagaMiddleware();
 

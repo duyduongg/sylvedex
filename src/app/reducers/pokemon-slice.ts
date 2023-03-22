@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
-import { Pokemon } from '../../models/Pokemon';
-import { baseSliceInitialState, BaseSliceState } from '../BaseSliceState';
+import { Pokemon } from '../../models/pokemon';
+import { baseSliceInitialState, BaseSliceState } from '../base-slice-state';
 interface PokemonState extends BaseSliceState {
 	limit: number;
 	offset: number;

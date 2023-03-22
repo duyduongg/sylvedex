@@ -1,5 +1,5 @@
 import { all } from 'redux-saga/effects';
-import { pokemonSaga } from './PokemonSaga';
+import { pokemonSaga } from './pokemon-saga';
 export default function* rootSaga() {
 	yield all([pokemonSaga()]);
 }
