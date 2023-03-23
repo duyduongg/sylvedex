@@ -1,0 +1,56 @@
+@import '../../variables.scss';
+header {
+	background-color: transparent;
+	box-sizing: border-box;
+	@apply z-10;
+	@apply relative;
+	.logo {
+		@apply outline-none;
+	}
+	.content {
+		font-family: 'Montserrat';
+		color: $color-primary-darker;
+		padding: 1.5rem 0 1.5rem 3rem;
+		font-size: 1.5em;
+		@apply font-semibold;
+		@apply flex;
+		@apply flex-row;
+		@apply items-center;
+		.nav-links {
+			@apply ml-8;
+			@apply flex;
+			@apply flex-row;
+			a {
+				@apply mx-8;
+				@apply relative;
+				&::before {
+					content: '';
+					@apply absolute;
+					width: calc(100% + 40px);
+					height: 3px;
+					bottom: -30px;
+					left: -20px;
+					background-color: $color-primary-darker;
+					@apply invisible;
+					-webkit-transform: scaleX(0);
+					transform: scaleX(0);
+				}
+				&:hover {
+					&::before {
+						@apply visible;
+						-webkit-transform: scaleX(1);
+						transform: scaleX(1);
+					}
+				}
+			}
+			.menu {
+				@apply flex;
+				@apply flex-row;
+				@apply items-center;
+				span:first-child {
+					margin-right: 4px;
+				}
+			}
+		}
+	}
+}
