@@ -4,4 +4,7 @@
 body {
 	margin: 0 !important;
 	font-family: 'Montserrat', sans-serif;
+	@apply flex;
+	@apply flex-col;
+	@apply overflow-x-hidden;
 }

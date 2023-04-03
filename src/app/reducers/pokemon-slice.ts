@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
 import { Pokemon } from '../../models/pokemon';
 import { baseSliceInitialState, BaseSliceState } from '../base-slice-state';
@@ -54,7 +55,7 @@ const pokemonSlice = createSlice({
 const pokemonPersistConfig = {
 	key: 'pokemon',
 	storage,
-	whitelite: ['list', 'detail']
+	whitelist: ['list', 'detail', 'offset']
 };
 
 export const {
@@ -66,4 +67,6 @@ export const {
 	errorGettingPokemonDetail
 } = pokemonSlice.actions;
 export const pokemonActions = pokemonSlice.actions;
-export const pokemonState = pokemonSlice.reducer;
+export const pokemonState = persistReducer(pokemonPersistConfig, pokemonSlice.reducer);
+
+type D = typeof requestGettingPokemons;

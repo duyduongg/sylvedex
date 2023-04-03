@@ -1,0 +1,42 @@
+@import '../../../variables.scss';
+.item-container {
+	border: 1px solid $color-container-outline-primary;
+	width: 15rem;
+	border-bottom: none;
+	@apply rounded-t-2xl;
+	@apply rounded-b-2xl;
+	font-family: 'Montserrat', sans-serif;
+	@apply font-medium;
+	font-size: 0.875em;
+	.pokemon-name {
+		@apply text-center;
+		@apply py-2;
+		border-top: 1px solid $color-container-outline-primary;
+	}
+
+	.pokemon-type {
+		@apply grid;
+		@apply grid-cols-2;
+		@apply text-center;
+		border-top: 1px solid $color-container-outline-primary;
+		border-bottom: 1px solid $color-container-outline-primary;
+		@apply rounded-b-2xl;
+
+		color: white;
+		.type {
+			padding: 0.5rem;
+		}
+
+		.type-primary {
+			@apply rounded-bl-2xl;
+		}
+
+		.type-secondary {
+			@apply rounded-br-2xl;
+		}
+	}
+
+	&:hover {
+		transform: scaleZ(1.5);
+	}
+}

@@ -12,7 +12,8 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
 	key: 'root',
 	storage,
-	stateReconciler: autoMergeLevel2
+	stateReconciler: autoMergeLevel2,
+	whitelist: []
 };
 
 const persistedReducer = persistReducer<RootReducer, AnyAction>(persistConfig, rootReducer);

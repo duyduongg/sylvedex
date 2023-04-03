@@ -1,0 +1,38 @@
+@import '../../variables.scss';
+.info-page {
+	padding: 3.375rem 11.875rem;
+	height: fit-content;
+	@apply relative;
+	@apply flex;
+	@apply flex-col;
+	.search-bar {
+		width: 39rem;
+		@apply self-center;
+		@apply mb-14;
+		.search-form {
+			width: inherit;
+			@apply relative;
+			.search-input {
+				width: inherit;
+				height: 4rem;
+				text-indent: 2rem;
+				border: 1px solid #c3c3c3;
+				@apply rounded-full;
+				@apply outline-none;
+				font-size: 1.5em;
+			}
+			.search-btn {
+				@apply absolute;
+				background-color: $color-primary-darker;
+				padding: 1rem 3rem;
+				height: 4rem;
+				color: white;
+				@apply text-2xl;
+				@apply rounded-tr-full;
+				@apply rounded-br-full;
+				top: 0;
+				right: 0;
+			}
+		}
+	}
+}

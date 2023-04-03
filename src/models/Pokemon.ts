@@ -6,7 +6,7 @@ export interface Pokemon extends BaseEntity {
 	base_experience: number;
 	height: number;
 	weight: number;
-
+	name: string;
 	order: number;
 	sprites: Sprite;
 	types: PokemonType[];

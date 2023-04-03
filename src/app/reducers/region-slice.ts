@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import persistReducer from 'redux-persist/lib/persistReducer';
+import storage from 'redux-persist/lib/storage';
 import { NamedApiResource } from '../../models/named-api-resource';
 import { baseSliceInitialState, BaseSliceState } from '../base-slice-state';
 
@@ -29,6 +31,12 @@ const regionSlice = createSlice({
 	}
 });
 
+const regionPersistConfig = {
+	key: 'region',
+	storage,
+	whitelist: ['results']
+};
+
 export const { requestGettingRegions, completeGettingRegions, errorGettingRegions } = regionSlice.actions;
 export const regionAction = regionSlice.actions;
-export const regionState = regionSlice.reducer;
+export const regionState = persistReducer(regionPersistConfig, regionSlice.reducer);

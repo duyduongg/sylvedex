@@ -1,9 +1,12 @@
 @import '../../variables.scss';
 header {
-	background-color: transparent;
+	background: linear-gradient(90deg, $color-primary 0%, $color-secondary 75.34%, $color-primary 98.48%);
 	box-sizing: border-box;
 	@apply z-10;
 	@apply relative;
+	&.main {
+		background: transparent;
+	}
 	.logo {
 		@apply outline-none;
 	}
@@ -51,6 +54,20 @@ header {
 					margin-right: 4px;
 				}
 			}
+		}
+	}
+	.social-links {
+		@apply absolute;
+		right: 0;
+		@apply mr-20;
+		@apply flex;
+		@apply flex-row;
+		@apply self-center;
+		vertical-align: middle;
+		.social-link {
+			margin: 0 1rem 0 1rem;
+			width: 24px;
+			height: auto;
 		}
 	}
 }

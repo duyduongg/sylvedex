@@ -33,19 +33,24 @@ function* getPokemons() {
 				offset: state.pokemonState.offset
 			};
 		});
-		const resourceList: NamedApiResourceList = yield call(pokemonServices.getPokemons, state.limit, state.offset);
-		let idList: string[] = [];
-		resourceList.results.map((v) =>
-			idList.push(v.url.slice(`${import.meta.env.VITE_API_BASE_URL}/pokemon/`.length - 1, v.url.length - 1))
-		);
-		let pokemonList: Pokemon[] = [];
+		const localStorageState = JSON.parse(localStorage.getItem('persist:pokemon') || '');
+		if (state.offset !== parseInt(localStorageState?.offset)) {
+			const resourceList: NamedApiResourceList = yield call(pokemonServices.getPokemons, state.limit, state.offset);
+			let idList: string[] = [];
+			resourceList.results.map((v) =>
+				idList.push(v.url.slice(`${import.meta.env.VITE_API_BASE_URL}/pokemon/`.length - 1, v.url.length - 1))
+			);
+			let pokemonList: Pokemon[] = [];
 
-		pokemonList = yield all(
-			idList.map((id) => {
-				return call(pokemonServices.getPokemon, id);
-			})
-		);
-		yield put(pokemonActions.completeGettingPokemons(pokemonList));
+			pokemonList = yield all(
+				idList.map((id) => {
+					return call(pokemonServices.getPokemon, id);
+				})
+			);
+			yield put(pokemonActions.completeGettingPokemons(pokemonList));
+		} else {
+			console.log('Get from local storage');
+		}
 	} catch (err) {
 		if (err instanceof Error) {
 			yield put(pokemonActions.errorGettingPokemons(err.message));

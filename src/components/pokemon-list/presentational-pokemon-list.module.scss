@@ -1,0 +1,7 @@
+.list {
+	@apply grid;
+	@apply grid-cols-6;
+	@apply gap-x-5;
+	@apply gap-y-5;
+	@apply overflow-visible;
+}
