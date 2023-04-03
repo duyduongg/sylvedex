@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MoonLoader } from 'react-spinners';
 import { Pokemon } from '../../../models/pokemon';
 import classes from './pokemon-list-item.module.scss';
+import fallback from '../../../assets/fallback.svg';
 export interface PokemonListItemProps {
 	data: Pokemon;
 }
@@ -14,9 +15,13 @@ export const PokemonListItem = ({ data }: PokemonListItemProps) => {
 		<Link to={`../${data.id}`}>
 			<div className={classes['item-container']}>
 				<div className={classes['pokemon-official-art']}>
-					<Suspense fallback={<MoonLoader />}>
-						<img src={data.sprites.other['official-artwork'].front_default} alt={`${data.name}-official-artwork`} />
-					</Suspense>
+					{data.sprites.other['official-artwork'].front_default ? (
+						<Suspense fallback={<MoonLoader />}>
+							<img src={data.sprites.other['official-artwork'].front_default} alt={`${data.name}-official-artwork`} />
+						</Suspense>
+					) : (
+						<img src={fallback} />
+					)}
 				</div>
 				<div className={classes['pokemon-name']}>{capitalizeName(data.name)}</div>
 				<div className={classes['pokemon-type']}>

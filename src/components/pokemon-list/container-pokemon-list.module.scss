@@ -1,2 +1,8 @@
+@import '../../variables.scss';
 .list-container {
+	.api-src-issue-msg {
+		color: $color-primary-darker;
+		@apply font-medium;
+		@apply mb-4;
+	}
 }

@@ -30,11 +30,14 @@ function* getPokemons() {
 		const state = yield* appSelect((state) => {
 			return {
 				limit: state.pokemonState.limit,
-				offset: state.pokemonState.offset
+				offset: state.pokemonState.offset,
+				total: state.pokemonState.total
 			};
 		});
 		const localStorageState = JSON.parse(localStorage.getItem('persist:pokemon') || '');
-		if (state.offset !== parseInt(localStorageState?.offset)) {
+
+		// Refetch if: Change page, first time fetching
+		if (state.offset !== parseInt(localStorageState?.offset) || parseInt(localStorageState?.total) === 0) {
 			const resourceList: NamedApiResourceList = yield call(pokemonServices.getPokemons, state.limit, state.offset);
 			let idList: string[] = [];
 			resourceList.results.map((v) =>
@@ -47,7 +50,7 @@ function* getPokemons() {
 					return call(pokemonServices.getPokemon, id);
 				})
 			);
-			yield put(pokemonActions.completeGettingPokemons(pokemonList));
+			yield put(pokemonActions.completeGettingPokemons([pokemonList, resourceList.count]));
 		} else {
 			console.log('Get from local storage');
 		}

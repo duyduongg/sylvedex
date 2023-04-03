@@ -8,6 +8,7 @@ interface PokemonState extends BaseSliceState {
 	offset: number;
 	list: Pokemon[];
 	detail: Pokemon;
+	total: number;
 }
 const pokemonSlice = createSlice({
 	name: 'pokemon',
@@ -16,6 +17,7 @@ const pokemonSlice = createSlice({
 		list: [],
 		limit: 24,
 		offset: 0,
+		total: 0,
 		detail: {} as Pokemon
 	} as PokemonState,
 	reducers: {
@@ -26,10 +28,11 @@ const pokemonSlice = createSlice({
 				state.offset = factor >= 0 ? (factor - 1) * state.limit : 0;
 			}
 		},
-		completeGettingPokemons(state, action: PayloadAction<Pokemon[]>) {
+		completeGettingPokemons(state, action: PayloadAction<[Pokemon[], number]>) {
 			state.isLoading = false;
 			state.isError = false;
-			state.list = action.payload;
+			state.list = action.payload[0];
+			state.total = action.payload[1];
 		},
 		errorGettingPokemons(state, action: PayloadAction<string>) {
 			state.isLoading = false;
@@ -55,7 +58,7 @@ const pokemonSlice = createSlice({
 const pokemonPersistConfig = {
 	key: 'pokemon',
 	storage,
-	whitelist: ['list', 'detail', 'offset']
+	whitelist: ['list', 'detail', 'offset', 'total']
 };
 
 export const {
@@ -68,5 +71,3 @@ export const {
 } = pokemonSlice.actions;
 export const pokemonActions = pokemonSlice.actions;
 export const pokemonState = persistReducer(pokemonPersistConfig, pokemonSlice.reducer);
-
-type D = typeof requestGettingPokemons;

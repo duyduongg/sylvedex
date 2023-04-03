@@ -1,0 +1,53 @@
+@import '../../variables.scss';
+.paginator {
+	@apply flex;
+	@apply flex-row;
+	@apply p-2;
+	@apply mt-16;
+	@apply mx-auto;
+	border: 1px solid $color-container-outline-primary;
+	@apply rounded-lg;
+	@apply w-fit;
+	@apply font-medium;
+	@apply items-center;
+	color: $color-primary-darker;
+	.page-change-btn {
+		@apply cursor-pointer;
+
+		&.previous {
+			border-right: 1px solid $color-container-outline-primary;
+			@apply px-3;
+			.icon {
+				@apply mr-2;
+			}
+		}
+
+		&.next {
+			border-left: 1px solid $color-container-outline-primary;
+			@apply px-3;
+			.icon {
+				@apply ml-2;
+			}
+		}
+	}
+	.page-number {
+		@apply w-9;
+		@apply h-9;
+		@apply text-center;
+		line-height: 36px;
+		@apply rounded-xl;
+		@apply mx-1;
+		@apply cursor-pointer;
+		&:first {
+			margin-left: cal(14px / 1rem);
+		}
+		&.selected {
+			color: white;
+			background-color: $color-primary-darker;
+		}
+	}
+	.disabled {
+		@apply pointer-events-none;
+		opacity: 0.5;
+	}
+}
