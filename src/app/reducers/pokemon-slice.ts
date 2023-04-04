@@ -15,7 +15,7 @@ const pokemonSlice = createSlice({
 	initialState: {
 		...baseSliceInitialState,
 		list: [],
-		limit: 24,
+		limit: 20,
 		offset: 0,
 		total: 0,
 		detail: {} as Pokemon

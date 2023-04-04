@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import classes from './header.module.scss';
 import logo from '../../assets/logo.png';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { requestGettingRegions } from '../../app/reducers/region-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -11,10 +11,11 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 export const Header = () => {
 	const location = useLocation();
 	const dispatch = useAppDispatch();
-	const region = useAppSelector((state) => state.regionState.results);
+	const regions = useAppSelector((state) => state.regionState.results);
 	useEffect(() => {
 		dispatch(requestGettingRegions());
 	}, []);
+
 	return (
 		<header className={`${location.pathname === '/' ? `${classes['main']}` : ''}`}>
 			<div className={classes['content']}>
@@ -24,13 +25,17 @@ export const Header = () => {
 					</Link>
 				</div>
 				<div className={classes['nav-links']}>
-					<NavLink to="/" className={({ isActive, isPending }) => (isPending ? `pending` : isActive ? 'active' : '')}>
+					<NavLink to="/" className={({ isActive }) => (isActive ? `${classes['active']}` : '')}>
 						Home
 					</NavLink>
 					<NavLink
-						to="/"
+						to="/pokemons"
 						className={({ isActive, isPending }) =>
-							isPending ? `${classes['menu']} pending` : isActive ? `${classes['menu']} active` : `${classes['menu']}`
+							isPending
+								? `${classes['menu']} pending`
+								: isActive
+								? `${classes['menu']} ${classes['active']}`
+								: `${classes['menu']}`
 						}
 					>
 						<span>List Pokémons</span>
@@ -43,6 +48,13 @@ export const Header = () => {
 								/>
 							</svg>
 						</span>
+						<Suspense fallback="...Loading">
+							<ul>
+								{regions.map((r) => (
+									<li key={r.name}>{r.name}</li>
+								))}
+							</ul>
+						</Suspense>
 					</NavLink>
 				</div>
 				<div className={classes['social-links']}>

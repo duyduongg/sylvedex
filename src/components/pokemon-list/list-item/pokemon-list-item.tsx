@@ -8,7 +8,7 @@ export interface PokemonListItemProps {
 	data: Pokemon;
 }
 export const PokemonListItem = ({ data }: PokemonListItemProps) => {
-	const capitalizeName = (name: string) => {
+	const capitalize = (name: string) => {
 		return name.at(0)?.toUpperCase() + name.slice(1);
 	};
 	return (
@@ -23,17 +23,20 @@ export const PokemonListItem = ({ data }: PokemonListItemProps) => {
 						<img src={fallback} />
 					)}
 				</div>
-				<div className={classes['pokemon-name']}>{capitalizeName(data.name)}</div>
+				<div className={classes['pokemon-id']}>
+					N<span>&#7506;</span> {data.id}
+				</div>
+				<div className={classes['pokemon-name']}>{capitalize(data.name)}</div>
 				<div className={classes['pokemon-type']}>
 					<div className={`type-${data.types[0].type.name} ${classes['type']} ${classes['type-primary']} `}>
-						{data.types[0].type.name.toUpperCase()}
+						{capitalize(data.types[0].type.name)}
 					</div>
 					<div
 						className={`type-${data.types[1] ? data.types[1].type.name : 'none'} ${classes['type']} ${
 							classes['type-secondary']
 						} `}
 					>
-						{data.types[1] ? data.types[1].type.name.toLocaleUpperCase() : 'N/A'}
+						{data.types[1] ? capitalize(data.types[1].type.name) : 'N/A'}
 					</div>
 				</div>
 			</div>

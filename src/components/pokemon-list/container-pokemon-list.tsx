@@ -26,7 +26,7 @@ export const ContainerPokemonList = () => {
 		<div className={classes['list-container']}>
 			<div className={classes['api-src-issue-msg']}>
 				* Due to inaccuracy of data provided by PokéApi, data of Sword and Shield (Generation 9), some pokémon
-				information may be displayed not as expected
+				information may be displayed not as expected.
 			</div>
 			<Suspense fallback={<Spinner isDataLoading={isLoading} />}>
 				<PresentationalPokemonList pokemons={list} />
