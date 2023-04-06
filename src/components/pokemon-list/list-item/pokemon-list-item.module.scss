@@ -8,25 +8,14 @@
 	@apply grid;
 	@apply flex-col;
 	@apply text-center;
-	padding: 4.5rem 1.5rem 1.5rem 1.5rem;
 	@apply w-60;
-	@apply mt-36;
+
 	color: $color-black;
 	.pokemon-official-art {
 		@apply absolute;
-		bottom: 96px;
-		left: 0;
-		transform: scale(0.75);
-		-ms-transform: scale(0.75);
-		-webkit-transform: scale(0.75);
 	}
 	.fallback-img {
 		@apply absolute;
-		bottom: 135px;
-		right: 2rem;
-		transform: scale(0.75);
-		-ms-transform: scale(0.75);
-		-webkit-transform: scale(0.75);
 	}
 	.pokemon-id {
 		@apply font-semibold;
@@ -34,7 +23,6 @@
 	}
 	.pokemon-name {
 		@apply font-bold;
-		@apply text-2xl;
 		@apply mb-2;
 	}
 
@@ -45,11 +33,107 @@
 		@apply justify-self-center;
 		.type {
 			@apply w-fit;
-			@apply p-2;
 			@apply rounded-xl;
 			@apply font-medium;
 			@apply text-white;
 			@apply mx-2;
+		}
+	}
+}
+
+@media (min-width: 1720px) {
+	.item-container {
+		@apply w-60;
+		padding: 4.5rem 1.5rem 1.5rem 1.5rem;
+		@apply mt-36;
+		.pokemon-official-art {
+			bottom: 96px;
+			left: 0;
+			transform: scale(0.75);
+			-ms-transform: scale(0.75);
+			-webkit-transform: scale(0.75);
+		}
+
+		.fallback-img {
+			bottom: 135px;
+			right: 2rem;
+			transform: scale(0.75);
+			-ms-transform: scale(0.75);
+			-webkit-transform: scale(0.75);
+		}
+		.pokemon-name {
+			@apply text-2xl;
+		}
+
+		.pokemon-type {
+			.type {
+				@apply p-2;
+				@apply text-base;
+			}
+		}
+	}
+}
+
+@media (max-width: 1719px) {
+	.item-container {
+		@apply w-52;
+		@apply mt-28;
+		padding: 4.5rem 1rem 1rem 1rem;
+		.pokemon-official-art {
+			bottom: 88px;
+			left: 0;
+			transform: scale(0.7);
+			-ms-transform: scale(0.7);
+			-webkit-transform: scale(0.7);
+		}
+		.fallback-img {
+			bottom: 108px;
+			right: 0;
+			transform: scale(0.7);
+			-ms-transform: scale(0.7);
+			-webkit-transform: scale(0.7);
+		}
+		.pokemon-name {
+			@apply text-lg;
+		}
+
+		.pokemon-type {
+			.type {
+				@apply text-sm;
+				@apply p-2;
+			}
+		}
+	}
+}
+
+@media (max-width: 1480px) {
+	.item-container {
+		@apply w-44;
+		@apply mt-24;
+		padding: 3rem 1rem 1rem 1rem;
+		.pokemon-official-art {
+			bottom: 72px;
+			left: 0;
+			transform: scale(0.6);
+			-ms-transform: scale(0.6);
+			-webkit-transform: scale(0.6);
+		}
+		.fallback-img {
+			bottom: 96px;
+			right: -15px;
+			transform: scale(0.6);
+			-ms-transform: scale(0.6);
+			-webkit-transform: scale(0.6);
+		}
+		.pokemon-name {
+			@apply text-base;
+		}
+
+		.pokemon-type {
+			.type {
+				@apply text-xs;
+				padding: 0.5rem 0.25rem;
+			}
 		}
 	}
 }

@@ -51,3 +51,10 @@
 		opacity: 0.5;
 	}
 }
+
+@media (max-width: 1480px) {
+	.paginator {
+		@apply mt-12;
+		@apply text-base;
+	}
+}

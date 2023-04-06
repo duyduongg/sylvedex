@@ -10,19 +10,22 @@
 		& img {
 			@apply mx-auto;
 			@apply h-auto;
-			transform: scale(0.8);
-			-ms-transform: scale(0.8);
-			-webkit-transform: scale(0.8);
+		}
+	}
+
+	.fallback-img {
+		@apply absolute;
+		& img {
+			@apply mx-auto;
+			@apply h-auto;
 		}
 	}
 	.pokemon-id {
-		@apply text-2xl;
 		color: $color-container-outline-secondary;
 		@apply font-medium;
 		@apply mt-4;
 	}
 	.pokemon-name {
-		@apply text-5xl;
 		@apply font-bold;
 		@apply mb-4;
 	}
@@ -33,17 +36,13 @@
 		@apply justify-self-center;
 		@apply mt-4;
 		.type {
-			@apply w-40;
-			@apply py-3;
 			@apply rounded-xl;
 			@apply font-medium;
 			@apply text-white;
 			@apply mx-2;
-			@apply text-xl;
 		}
 	}
 	.abilities {
-		@apply text-3xl;
 		@apply font-semibold;
 		@apply mt-8;
 		@apply flex;
@@ -63,9 +62,7 @@
 				border: 1px solid $color-primary-darker;
 				@apply relative;
 				@apply rounded-full;
-				@apply py-2;
-				@apply px-6;
-				min-width: 15rem;
+
 				@apply cursor-default;
 				.ability-description {
 					@apply invisible;
@@ -105,7 +102,6 @@
 	}
 
 	.label {
-		@apply text-3xl;
 		@apply font-semibold;
 	}
 
@@ -114,9 +110,7 @@
 		@apply flex-row;
 		@apply gap-x-8;
 		.sub-info-section {
-			@apply mt-8;
 			.info {
-				@apply text-3xl;
 				@apply font-semibold;
 				background-color: $color-container-outline-primary;
 				@apply rounded-full;
@@ -128,7 +122,6 @@
 	.stats {
 		@apply mt-8;
 		@apply w-full;
-		@apply px-20;
 		.stats-container {
 			@apply grid;
 			@apply flex-col;
@@ -136,19 +129,242 @@
 				@apply my-2;
 				@apply grid;
 				@apply justify-self-center;
-				grid-template-columns: 16rem 255px;
 				.numeric-value {
 					@apply grid;
-					@apply grid-cols-5;
 					@apply font-medium;
-					@apply text-2xl;
 					.stat-name {
-						@apply col-span-4;
 						@apply text-left;
 					}
 				}
 				.chart {
 					@apply rounded-sm;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1720px) {
+	.presentational-container {
+		& img {
+			transform: scale(0.8);
+			-ms-transform: scale(0.8);
+			-webkit-transform: scale(0.8);
+		}
+	}
+
+	.fallback-img {
+		top: 6rem;
+		& img {
+			transform: scale(1.5);
+			-ms-transform: scale(1.5);
+			-webkit-transform: scale(1.5);
+		}
+	}
+	.pokemon-id {
+		@apply text-2xl;
+	}
+
+	.pokemon-name {
+		@apply text-5xl;
+	}
+
+	.pokemon-type {
+		.type {
+			@apply w-40;
+			@apply text-xl;
+			@apply py-3;
+		}
+	}
+
+	.abilities {
+		@apply text-3xl;
+		.abilities-container {
+			.ability {
+				@apply py-2;
+				@apply px-6;
+				min-width: 15rem;
+			}
+		}
+	}
+
+	.label {
+		@apply text-3xl;
+	}
+
+	.sub-info {
+		@apply text-2xl;
+		.sub-info-section {
+			@apply mt-8;
+			.info {
+				@apply mt-4;
+			}
+		}
+	}
+
+	.stats {
+		@apply px-20;
+		.stats-container {
+			.stat-container {
+				grid-template-columns: 16rem 255px;
+				.numeric-value {
+					@apply grid-cols-5;
+					@apply text-2xl;
+					.stat-name {
+						@apply col-span-4;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1719px) {
+	.presentational-container {
+		& img {
+			transform: scale(0.7);
+			-ms-transform: scale(0.7);
+			-webkit-transform: scale(0.7);
+		}
+	}
+
+	.fallback-img {
+		top: 6rem;
+		& img {
+			transform: scale(1.3);
+			-ms-transform: scale(1.3);
+			-webkit-transform: scale(1.3);
+		}
+	}
+
+	.pokemon-id {
+		@apply text-xl;
+	}
+
+	.pokemon-name {
+		@apply text-4xl;
+	}
+
+	.pokemon-type {
+		.type {
+			@apply w-36;
+			@apply text-lg;
+			@apply py-2;
+		}
+	}
+
+	.abilities {
+		@apply text-2xl;
+		.abilities-container {
+			.ability {
+				@apply py-1;
+				@apply px-2;
+				min-width: 11rem;
+			}
+		}
+	}
+
+	.label {
+		@apply text-2xl;
+	}
+
+	.sub-info {
+		@apply text-xl;
+		.sub-info-section {
+			@apply mt-4;
+			.info {
+				@apply mt-2;
+			}
+		}
+	}
+
+	.stats {
+		@apply px-10;
+		.stats-container {
+			.stat-container {
+				grid-template-columns: 14rem 255px;
+				.numeric-value {
+					@apply grid-cols-12;
+					@apply text-xl;
+					.stat-name {
+						@apply col-span-10;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1480px) {
+	.presentational-container {
+		& img {
+			transform: scale(0.6);
+			-ms-transform: scale(0.6);
+			-webkit-transform: scale(0.6);
+		}
+	}
+
+	.fallback-img {
+		top: 6rem;
+		& img {
+			transform: scale(1.1);
+			-ms-transform: scale(1.1);
+			-webkit-transform: scale(1.1);
+		}
+	}
+
+	.pokemon-id {
+		@apply text-lg;
+	}
+
+	.pokemon-name {
+		@apply text-3xl;
+	}
+
+	.pokemon-type {
+		.type {
+			@apply w-32;
+			@apply text-base;
+			@apply py-2;
+		}
+	}
+
+	.abilities {
+		@apply text-xl;
+		.abilities-container {
+			.ability {
+				@apply py-1;
+				@apply px-2;
+				min-width: fit-content;
+			}
+		}
+	}
+
+	.label {
+		@apply text-xl;
+	}
+
+	.sub-info {
+		@apply text-lg;
+		.sub-info-section {
+			@apply mt-2;
+			.info {
+				@apply mt-1;
+			}
+		}
+	}
+
+	.stats {
+		@apply px-5;
+		.stats-container {
+			.stat-container {
+				grid-template-columns: 12rem 255px;
+				.numeric-value {
+					@apply grid-cols-12;
+					@apply text-lg;
+					.stat-name {
+						@apply col-span-10;
+					}
 				}
 			}
 		}
