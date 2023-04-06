@@ -3,9 +3,11 @@ import { Pokemon } from '../../models/pokemon';
 import classes from './presentational-pokemon-detail.module.scss';
 import fallback from '../../assets/fallback.svg';
 import { MoonLoader } from 'react-spinners';
-import { capitalize, format } from '../../helpers/helpers';
+import { capitalize, combineAbility, format } from '../../helpers/helpers';
+import { Ability } from '../../models/ability';
 export interface PresentationalPokemonDetailProps {
 	data: Pokemon;
+	abilities: Ability[];
 }
 interface SubInfoSectionProps {
 	label: string;
@@ -24,7 +26,8 @@ const SubInfoSection = ({ label, info, unitMeasurement }: SubInfoSectionProps) =
 	);
 };
 
-export const PresentationalPokemonDetail = ({ data }: PresentationalPokemonDetailProps) => {
+export const PresentationalPokemonDetail = ({ data, abilities }: PresentationalPokemonDetailProps) => {
+	let combinedAbilities = combineAbility(data.abilities, abilities);
 	return (
 		<div className={classes['presentational-container']}>
 			{data.sprites.other['official-artwork'].front_default ? (
@@ -53,9 +56,10 @@ export const PresentationalPokemonDetail = ({ data }: PresentationalPokemonDetai
 			<div className={classes['abilities']}>
 				<div className={classes['label']}>ABILITIES</div>
 				<div className={classes['abilities-container']}>
-					{data.abilities.map((ability) => (
-						<div className={classes['ability']} key={ability.slot}>
-							{format(ability.ability.name)}
+					{combinedAbilities.map((ability) => (
+						<div className={classes['ability']} key={ability.name}>
+							{ability.name}
+							<span className={classes['ability-description']}>{ability.description}</span>
 						</div>
 					))}
 				</div>

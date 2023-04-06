@@ -1,11 +1,36 @@
+import { Ability } from '../models/ability';
+import { AbilityResource } from '../models/ability-resource';
+
 export const capitalize = (name: string) => {
 	return name.at(0)?.toUpperCase() + name.slice(1);
 };
 
 export const format = (name: string) => {
-	let str = '';
 	return name
 		.split('-')
 		.map((s) => capitalize(s))
 		.join(' ');
+};
+
+export const combineAbility = (
+	resource: AbilityResource[],
+	abilities: Ability[]
+): { name: string; description: string }[] => {
+	let abilitiesNames = resource.map((r) => {
+		return {
+			name: format(r.ability.name)
+		};
+	});
+	let abilitiesDescription = abilities.map((r) => {
+		return {
+			name: format(r.name),
+			description:
+				r.effect_entries.length !== 0 ? r.effect_entries.filter((e) => e.language.name === 'en')[0].short_effect : 'N/A'
+		};
+	});
+
+	const map = new Map();
+	abilitiesNames.forEach((item) => map.set(item.name, item));
+	abilitiesDescription.forEach((item) => map.set(item.name, { ...map.get(item.name), ...item }));
+	return Array.from(map.values()) as { name: string; description: string }[];
 };

@@ -61,10 +61,45 @@
 			.ability {
 				color: $color-primary-darker;
 				border: 1px solid $color-primary-darker;
+				@apply relative;
 				@apply rounded-full;
 				@apply py-2;
 				@apply px-6;
 				min-width: 15rem;
+				@apply cursor-default;
+				.ability-description {
+					@apply invisible;
+					@apply absolute;
+					transition: opacity 0.3s;
+					top: 125%;
+					left: 50%;
+					margin-left: -60px;
+					@apply text-xs;
+					@apply text-left;
+					min-width: fit-content;
+					@apply p-2;
+					@apply rounded-lg;
+					background-color: $color-primary-darker;
+					color: $color-type-text;
+					opacity: 0;
+					&::after {
+						content: '';
+						@apply absolute;
+						bottom: 100%;
+						left: 50%;
+						margin-left: -5px;
+						border-width: 5px;
+						border-style: solid;
+						border-color: transparent transparent $color-primary-darker transparent;
+					}
+				}
+
+				&:hover {
+					.ability-description {
+						@apply visible;
+						opacity: 1;
+					}
+				}
 			}
 		}
 	}

@@ -1,20 +1,12 @@
-import { Link, useLocation } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
-import classes from './header.module.scss';
-import logo from '../../assets/logo.png';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { Suspense, useEffect } from 'react';
-import { requestGettingRegions } from '../../app/reducers/region-slice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
+import logo from '../../assets/logo.png';
+import classes from './header.module.scss';
 export const Header = () => {
 	const location = useLocation();
 	const dispatch = useAppDispatch();
-	const regions = useAppSelector((state) => state.regionState.results);
-	useEffect(() => {
-		dispatch(requestGettingRegions());
-	}, []);
 
 	return (
 		<header className={`${location.pathname === '/' ? `${classes['main']}` : ''}`}>
@@ -39,13 +31,6 @@ export const Header = () => {
 						}
 					>
 						<span>List Pokémons</span>
-						{/* <Suspense fallback="...Loading">
-							<ul>
-								{regions.map((r) => (
-									<li key={r.name}>{r.name}</li>
-								))}
-							</ul>
-						</Suspense> */}
 					</NavLink>
 				</div>
 				<div className={classes['social-links']}>

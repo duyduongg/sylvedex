@@ -1,4 +1,4 @@
-import { Ability } from './ability';
+import { AbilityResource } from './ability-resource';
 import { BaseEntity } from './base-entity';
 import { Sprite } from './sprite';
 import { Stat } from './stat';
@@ -13,6 +13,6 @@ export interface Pokemon extends BaseEntity {
 	sprites: Sprite;
 	types: PokemonType[];
 	stats: Stat[];
-	abilities: Ability[];
+	abilities: AbilityResource[];
 	[key: string]: any;
 }
