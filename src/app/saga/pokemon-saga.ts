@@ -5,9 +5,9 @@ import { Pokemon } from '../../models/pokemon';
 import { pokemonServices } from '../../services/pokemon-service';
 import { appSelect } from '../hooks';
 import { pokemonActions } from '../reducers/pokemon-slice';
-function* getPokemonDetail(id: string) {
+function* getPokemonDetail(searchValue: string) {
 	try {
-		const pokemon: Pokemon = yield call(pokemonServices.getPokemon, id);
+		const pokemon: Pokemon = yield call(pokemonServices.getPokemon, searchValue.toLowerCase());
 		yield put(pokemonActions.completeGettingPokemonDetail(pokemon));
 	} catch (err) {
 		if (err instanceof Error) {

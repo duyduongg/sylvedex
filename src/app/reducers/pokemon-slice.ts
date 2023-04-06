@@ -7,18 +7,28 @@ interface PokemonState extends BaseSliceState {
 	limit: number;
 	offset: number;
 	list: Pokemon[];
-	detail: Pokemon;
 	total: number;
+	detail: {
+		data: Pokemon;
+		id: number;
+		isLoading: boolean;
+		isError: boolean;
+	};
 }
 const pokemonSlice = createSlice({
 	name: 'pokemon',
 	initialState: {
 		...baseSliceInitialState,
 		list: [],
-		limit: 20,
+		limit: 12,
 		offset: 0,
 		total: 0,
-		detail: {} as Pokemon
+		detail: {
+			data: {} as Pokemon,
+			id: 1,
+			isError: false,
+			isLoading: false
+		}
 	} as PokemonState,
 	reducers: {
 		requestGettingPokemons(state, action: PayloadAction<number | undefined>) {
@@ -40,17 +50,21 @@ const pokemonSlice = createSlice({
 			state.errorMessage = action.payload;
 		},
 		requestGettingPokemonDetail(state, action: PayloadAction<string>) {
-			state.isLoading = true;
+			state.detail.isLoading = true;
 		},
 		completeGettingPokemonDetail(state, action: PayloadAction<Pokemon>) {
-			state.isLoading = false;
-			state.isError = false;
-			state.detail = action.payload;
+			state.detail.isLoading = false;
+			state.detail.isError = false;
+			state.detail.data = action.payload;
+			state.detail.id = action.payload.id;
 		},
 		errorGettingPokemonDetail(state, action: PayloadAction<string>) {
-			state.isLoading = false;
-			state.isError = true;
+			state.detail.isLoading = false;
+			state.detail.isError = true;
 			state.errorMessage = action.payload;
+		},
+		setCurrentDetailId(state, action: PayloadAction<number>) {
+			state.detail.id = action.payload;
 		}
 	}
 });
@@ -67,7 +81,8 @@ export const {
 	errorGettingPokemons,
 	requestGettingPokemonDetail,
 	completeGettingPokemonDetail,
-	errorGettingPokemonDetail
+	errorGettingPokemonDetail,
+	setCurrentDetailId
 } = pokemonSlice.actions;
 export const pokemonActions = pokemonSlice.actions;
 export const pokemonState = persistReducer(pokemonPersistConfig, pokemonSlice.reducer);

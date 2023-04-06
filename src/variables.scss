@@ -6,6 +6,7 @@ $color-secondary-darker: #f492a5;
 $color-secondary-sub: #f7e8d8;
 $color-container-outline-primary: #e5e5e5;
 $color-container-outline-secondary: #c3c3c3;
+$color-black: #121212;
 
 $color-type-normal: #a8a878;
 $color-type-grass: #78c850;
@@ -26,6 +27,19 @@ $color-type-psychic: #f85888;
 $color-type-fighting: #c03028;
 $color-type-dragon: #7038f8;
 $color-type-text: #fff;
+
+$color-stat-hp-primary: #ff0000;
+$color-stat-hp-secondary: #a60000;
+$color-stat-atk-primary: #f08030;
+$color-stat-atk-secondary: #9c531f;
+$color-stat-def-primary: #f8d030;
+$color-stat-def-secondary: #a1871f;
+$color-stat-sp-atk-primary: #6890f0;
+$color-stat-sp-atk-secondary: #445e9c;
+$color-stat-sp-def-primary: #78c850;
+$color-stat-sp-def-secondary: #4e8234;
+$color-stat-spd-primary: #f85888;
+$color-stat-spd-secondary: #a13959;
 
 // :export {
 // 	primary: $color-primary;

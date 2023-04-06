@@ -1,15 +1,16 @@
 @import '../../variables.scss';
 .info-page {
-	padding: 3.375rem 11.875rem;
+	padding: 3.375rem 4rem;
 	height: fit-content;
 	@apply relative;
-	@apply flex;
-	@apply flex-col;
+	@apply grid;
+	@apply grid-cols-2;
+	@apply gap-x-16;
 	.list-section {
 		@apply flex;
 		@apply flex-col;
 		.search-bar {
-			width: 39rem;
+			@apply w-full;
 			@apply self-center;
 			@apply mb-6;
 			.search-form {
@@ -17,18 +18,18 @@
 				@apply relative;
 				.search-input {
 					width: inherit;
-					height: 4rem;
+					height: 3.5rem;
 					text-indent: 2rem;
 					border: 1px solid #c3c3c3;
 					@apply rounded-full;
 					@apply outline-none;
-					font-size: 1.5em;
+					font-size: 1.2em;
 				}
 				.search-btn {
 					@apply absolute;
 					background-color: $color-primary-darker;
-					padding: 1rem 3rem;
-					height: 4rem;
+					padding: 0.8rem 3rem;
+					height: 3.5rem;
 					color: white;
 					@apply text-2xl;
 					@apply rounded-tr-full;
@@ -38,5 +39,9 @@
 				}
 			}
 		}
+	}
+
+	.detail-section {
+		@apply mt-28;
 	}
 }

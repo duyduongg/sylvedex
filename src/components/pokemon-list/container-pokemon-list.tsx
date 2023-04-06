@@ -28,9 +28,7 @@ export const ContainerPokemonList = () => {
 				* Due to inaccuracy of data provided by PokéApi, data of Sword and Shield (Generation 9), some pokémon
 				information may be displayed not as expected.
 			</div>
-			<Suspense fallback={<Spinner isDataLoading={isLoading} />}>
-				<PresentationalPokemonList pokemons={list} />
-			</Suspense>
+			<Suspense fallback={<Spinner />}>{<PresentationalPokemonList pokemons={list} />}</Suspense>
 			{list.length !== 0 && (
 				<Paginator
 					current={currentPage}

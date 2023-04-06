@@ -5,15 +5,25 @@
 	@apply rounded-3xl;
 	@apply bg-white;
 	box-shadow: 0px 8px 4px hsla(0, 0%, 71%, 0.25);
-	@apply flex;
+	@apply grid;
 	@apply flex-col;
 	@apply text-center;
-	padding: 4.5rem 2rem 1.5rem 2rem;
-	@apply mt-28;
+	padding: 4.5rem 1.5rem 1.5rem 1.5rem;
+	@apply w-60;
+	@apply mt-36;
+	color: $color-black;
 	.pokemon-official-art {
 		@apply absolute;
 		bottom: 96px;
 		left: 0;
+		transform: scale(0.75);
+		-ms-transform: scale(0.75);
+		-webkit-transform: scale(0.75);
+	}
+	.fallback-img {
+		@apply absolute;
+		bottom: 135px;
+		right: 2rem;
 		transform: scale(0.75);
 		-ms-transform: scale(0.75);
 		-webkit-transform: scale(0.75);
@@ -30,15 +40,16 @@
 
 	.pokemon-type {
 		@apply self-center;
-		@apply grid;
-		@apply grid-cols-2;
-		@apply gap-4;
+		@apply flex;
+		@apply flex-row;
+		@apply justify-self-center;
 		.type {
 			@apply w-fit;
 			@apply p-2;
 			@apply rounded-xl;
 			@apply font-medium;
 			@apply text-white;
+			@apply mx-2;
 		}
 	}
 }

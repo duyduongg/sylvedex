@@ -76,6 +76,36 @@
 	color: black !important;
 }
 
+.stat-hp {
+	background-color: $color-stat-hp-primary;
+	border: 1px solid $color-stat-hp-secondary;
+}
+
+.stat-attack {
+	background-color: $color-stat-atk-primary;
+	border: 1px solid $color-stat-atk-secondary;
+}
+
+.stat-defense {
+	background-color: $color-stat-def-primary;
+	border: 1px solid $color-stat-def-secondary;
+}
+
+.stat-special-attack {
+	background-color: $color-stat-sp-atk-primary;
+	border: 1px solid $color-stat-sp-atk-secondary;
+}
+
+.stat-special-defense {
+	background-color: $color-stat-sp-def-primary;
+	border: 1px solid $color-stat-sp-def-secondary;
+}
+
+.stat-speed {
+	background-color: $color-stat-spd-primary;
+	border: 1px solid $color-stat-spd-secondary;
+}
+
 .App {
 	min-height: 100vh;
 	min-width: 100vw;

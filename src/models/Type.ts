@@ -1,7 +1,6 @@
+import { NamedApiResource } from './named-api-resource';
+
 export interface PokemonType {
-	type: {
-		name: string;
-		url: string;
-	};
+	type: NamedApiResource;
 	slot: number;
 }

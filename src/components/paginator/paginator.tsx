@@ -33,15 +33,16 @@ export const Paginator = ({ total, current, pageSize, onPageChange, siblingCount
 				<FontAwesomeIcon icon={faChevronLeft} className={classes['icon']} />
 				<span>Previous</span>
 			</div>
-			{paginationRange!.map((pageNumber) => {
+			{paginationRange!.map((pageNumber, idx) => {
 				if (pageNumber === DOTS) {
-					return <span>&#8230;</span>;
+					return <span key={idx}>&#8230;</span>;
 				}
 
 				return (
 					<span
 						className={`${classes['page-number']} ${pageNumber === current ? `${classes['selected']}` : ''}`}
 						onClick={() => onPageChange(pageNumber as number)}
+						key={idx}
 					>
 						{pageNumber}
 					</span>

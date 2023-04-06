@@ -1,0 +1,121 @@
+@import '../../variables.scss';
+.presentational-container {
+	@apply grid;
+	@apply flex-col;
+	@apply justify-items-center;
+	@apply text-center;
+	.pokemon-official-artwork {
+		@apply absolute;
+		top: 0rem;
+		& img {
+			@apply mx-auto;
+			@apply h-auto;
+			transform: scale(0.8);
+			-ms-transform: scale(0.8);
+			-webkit-transform: scale(0.8);
+		}
+	}
+	.pokemon-id {
+		@apply text-2xl;
+		color: $color-container-outline-secondary;
+		@apply font-medium;
+		@apply mt-4;
+	}
+	.pokemon-name {
+		@apply text-5xl;
+		@apply font-bold;
+		@apply mb-4;
+	}
+	.pokemon-type {
+		@apply self-center;
+		@apply flex;
+		@apply flex-row;
+		@apply justify-self-center;
+		@apply mt-4;
+		.type {
+			@apply w-40;
+			@apply py-3;
+			@apply rounded-xl;
+			@apply font-medium;
+			@apply text-white;
+			@apply mx-2;
+			@apply text-xl;
+		}
+	}
+	.abilities {
+		@apply text-3xl;
+		@apply font-semibold;
+		@apply mt-8;
+		@apply flex;
+		@apply flex-col;
+		.abilities-container {
+			@apply flex;
+			@apply flex-row;
+			@apply mt-3;
+			@apply gap-x-8;
+			@apply gap-y-4;
+			@apply justify-center;
+			@apply self-center;
+			@apply flex-wrap;
+			@apply px-10;
+			.ability {
+				color: $color-primary-darker;
+				border: 1px solid $color-primary-darker;
+				@apply rounded-full;
+				@apply py-2;
+				@apply px-6;
+				min-width: 15rem;
+			}
+		}
+	}
+
+	.label {
+		@apply text-3xl;
+		@apply font-semibold;
+	}
+
+	.sub-info {
+		@apply flex;
+		@apply flex-row;
+		@apply gap-x-8;
+		.sub-info-section {
+			@apply mt-8;
+			.info {
+				@apply text-3xl;
+				@apply font-semibold;
+				background-color: $color-container-outline-primary;
+				@apply rounded-full;
+				@apply py-2;
+			}
+		}
+	}
+
+	.stats {
+		@apply mt-8;
+		@apply w-full;
+		@apply px-20;
+		.stats-container {
+			@apply grid;
+			@apply flex-col;
+			.stat-container {
+				@apply my-2;
+				@apply grid;
+				@apply justify-self-center;
+				grid-template-columns: 16rem 255px;
+				.numeric-value {
+					@apply grid;
+					@apply grid-cols-5;
+					@apply font-medium;
+					@apply text-2xl;
+					.stat-name {
+						@apply col-span-4;
+						@apply text-left;
+					}
+				}
+				.chart {
+					@apply rounded-sm;
+				}
+			}
+		}
+	}
+}

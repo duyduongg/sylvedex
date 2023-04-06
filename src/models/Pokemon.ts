@@ -1,5 +1,7 @@
+import { Ability } from './ability';
 import { BaseEntity } from './base-entity';
 import { Sprite } from './sprite';
+import { Stat } from './stat';
 import { PokemonType } from './type';
 
 export interface Pokemon extends BaseEntity {
@@ -10,5 +12,7 @@ export interface Pokemon extends BaseEntity {
 	order: number;
 	sprites: Sprite;
 	types: PokemonType[];
+	stats: Stat[];
+	abilities: Ability[];
 	[key: string]: any;
 }
