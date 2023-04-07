@@ -5,7 +5,7 @@ import { Pokemon } from '../../../models/pokemon';
 import classes from './pokemon-list-item.module.scss';
 import fallback from '../../../assets/fallback.svg';
 import { useAppDispatch } from '../../../app/hooks';
-import { setCurrentDetailId } from '../../../app/reducers/pokemon-slice';
+import { setCurrentDetailId } from '../../../app/reducers/pokemon-detail-slice';
 import { capitalize } from '../../../helpers/helpers';
 export interface PokemonListItemProps {
 	data: Pokemon;

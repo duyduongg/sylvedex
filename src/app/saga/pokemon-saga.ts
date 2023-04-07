@@ -5,25 +5,6 @@ import { Pokemon } from '../../models/pokemon';
 import { pokemonServices } from '../../services/pokemon-service';
 import { appSelect } from '../hooks';
 import { pokemonActions } from '../reducers/pokemon-slice';
-function* getPokemonDetail(searchValue: string) {
-	try {
-		const pokemon: Pokemon = yield call(pokemonServices.getPokemon, searchValue.toLowerCase());
-		yield put(pokemonActions.completeGettingPokemonDetail(pokemon));
-	} catch (err) {
-		if (err instanceof Error) {
-			yield put(pokemonActions.errorGettingPokemonDetail(err.message));
-		} else {
-			yield put(pokemonActions.errorGettingPokemonDetail('An error occured when fetching pokemons list'));
-		}
-	}
-}
-
-function* getPokemonDetailWatcher() {
-	while (true) {
-		const action: PayloadAction<string> = yield take(pokemonActions.requestGettingPokemonDetail.type);
-		yield call(getPokemonDetail, action.payload);
-	}
-}
 
 function* getPokemons() {
 	try {
@@ -70,5 +51,5 @@ function* getPokemonsWatcher() {
 }
 
 export function* pokemonSaga() {
-	yield all([getPokemonsWatcher(), getPokemonDetailWatcher()]);
+	yield all([getPokemonsWatcher()]);
 }

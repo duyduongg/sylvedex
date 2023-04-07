@@ -9,36 +9,6 @@
 	.list-section {
 		@apply flex;
 		@apply flex-col;
-		.search-bar {
-			@apply w-full;
-			@apply self-center;
-			@apply mb-6;
-			.search-form {
-				width: inherit;
-				@apply relative;
-				.search-input {
-					width: inherit;
-					height: 3.5rem;
-					text-indent: 2rem;
-					border: 1px solid #c3c3c3;
-					@apply rounded-full;
-					@apply outline-none;
-					font-size: 1.2em;
-				}
-				.search-btn {
-					@apply absolute;
-					background-color: $color-primary-darker;
-					padding: 0.8rem 3rem;
-					height: 3.5rem;
-					color: white;
-					@apply text-2xl;
-					@apply rounded-tr-full;
-					@apply rounded-br-full;
-					top: 0;
-					right: 0;
-				}
-			}
-		}
 	}
 
 	.detail-section {

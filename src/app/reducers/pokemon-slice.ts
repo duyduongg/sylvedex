@@ -8,12 +8,6 @@ interface PokemonState extends BaseSliceState {
 	offset: number;
 	list: Pokemon[];
 	total: number;
-	detail: {
-		data: Pokemon;
-		id: number;
-		isLoading: boolean;
-		isError: boolean;
-	};
 }
 const pokemonSlice = createSlice({
 	name: 'pokemon',
@@ -22,13 +16,7 @@ const pokemonSlice = createSlice({
 		list: [],
 		limit: 12,
 		offset: 0,
-		total: 0,
-		detail: {
-			data: {} as Pokemon,
-			id: 1,
-			isError: false,
-			isLoading: false
-		}
+		total: 0
 	} as PokemonState,
 	reducers: {
 		requestGettingPokemons(state, action: PayloadAction<number | undefined>) {
@@ -48,23 +36,6 @@ const pokemonSlice = createSlice({
 			state.isLoading = false;
 			state.isError = true;
 			state.errorMessage = action.payload;
-		},
-		requestGettingPokemonDetail(state, action: PayloadAction<string>) {
-			state.detail.isLoading = true;
-		},
-		completeGettingPokemonDetail(state, action: PayloadAction<Pokemon>) {
-			state.detail.isLoading = false;
-			state.detail.isError = false;
-			state.detail.data = action.payload;
-			state.detail.id = action.payload.id;
-		},
-		errorGettingPokemonDetail(state, action: PayloadAction<string>) {
-			state.detail.isLoading = false;
-			state.detail.isError = true;
-			state.errorMessage = action.payload;
-		},
-		setCurrentDetailId(state, action: PayloadAction<number>) {
-			state.detail.id = action.payload;
 		}
 	}
 });
@@ -72,17 +43,9 @@ const pokemonSlice = createSlice({
 const pokemonPersistConfig = {
 	key: 'pokemon',
 	storage,
-	whitelist: ['list', 'detail', 'offset', 'total']
+	whitelist: ['list', 'offset', 'total']
 };
 
-export const {
-	requestGettingPokemons,
-	completeGettingPokemons,
-	errorGettingPokemons,
-	requestGettingPokemonDetail,
-	completeGettingPokemonDetail,
-	errorGettingPokemonDetail,
-	setCurrentDetailId
-} = pokemonSlice.actions;
+export const { requestGettingPokemons, completeGettingPokemons, errorGettingPokemons } = pokemonSlice.actions;
 export const pokemonActions = pokemonSlice.actions;
 export const pokemonState = persistReducer(pokemonPersistConfig, pokemonSlice.reducer);

@@ -1,13 +1,12 @@
 import { Suspense } from 'react';
+import { MoonLoader } from 'react-spinners';
+import fallback from '../../assets/fallback.svg';
+import { capitalize, CombinedAbilities, format } from '../../helpers/helpers';
 import { Pokemon } from '../../models/pokemon';
 import classes from './presentational-pokemon-detail.module.scss';
-import fallback from '../../assets/fallback.svg';
-import { MoonLoader } from 'react-spinners';
-import { capitalize, combineAbility, format } from '../../helpers/helpers';
-import { Ability } from '../../models/ability';
 export interface PresentationalPokemonDetailProps {
 	data: Pokemon;
-	abilities: Ability[];
+	combinedAbilities: CombinedAbilities[];
 }
 interface SubInfoSectionProps {
 	label: string;
@@ -26,8 +25,7 @@ const SubInfoSection = ({ label, info, unitMeasurement }: SubInfoSectionProps) =
 	);
 };
 
-export const PresentationalPokemonDetail = ({ data, abilities }: PresentationalPokemonDetailProps) => {
-	let combinedAbilities = combineAbility(data.abilities, abilities);
+export const PresentationalPokemonDetail = ({ data, combinedAbilities }: PresentationalPokemonDetailProps) => {
 	return (
 		<div className={classes['presentational-container']}>
 			{data.sprites.other['official-artwork'].front_default ? (

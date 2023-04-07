@@ -222,6 +222,7 @@
 @media (max-width: 1719px) {
 	.presentational-container {
 		& img {
+			top: -3rem;
 			transform: scale(0.7);
 			-ms-transform: scale(0.7);
 			-webkit-transform: scale(0.7);

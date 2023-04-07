@@ -1,0 +1,60 @@
+@import '../../variables.scss';
+.search-bar {
+	@apply w-full;
+	@apply self-center;
+	.search-form {
+		width: inherit;
+		@apply relative;
+		.search-input {
+			width: inherit;
+			border: 1px solid #c3c3c3;
+			@apply rounded-full;
+			@apply outline-none;
+		}
+		.search-btn {
+			@apply absolute;
+			background-color: $color-primary-darker;
+			color: white;
+			@apply rounded-tr-full;
+			@apply rounded-br-full;
+			top: 0;
+			right: 0;
+		}
+	}
+}
+
+@media (min-width: 1720px) {
+	.search-bar {
+		@apply mb-6;
+		.search-form {
+			.search-input {
+				height: 3.5rem;
+				text-indent: 2rem;
+				font-size: 1.2em;
+			}
+			.search-btn {
+				padding: 0.8rem 3rem;
+				height: 3.5rem;
+				@apply text-2xl;
+			}
+		}
+	}
+}
+
+@media (max-width: 1719px) {
+	.search-bar {
+		@apply mb-4;
+		.search-form {
+			.search-input {
+				height: 3rem;
+				text-indent: 1.5rem;
+				@apply text-base;
+			}
+			.search-btn {
+				padding: 0.8rem 2.5rem;
+				height: 3rem;
+				@apply text-xl;
+			}
+		}
+	}
+}
