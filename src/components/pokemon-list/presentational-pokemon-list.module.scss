@@ -2,15 +2,3 @@
 	@apply grid;
 	@apply grid-cols-3;
 }
-
-@media (min-width: 1720px) {
-	.list {
-		@apply gap-x-20;
-	}
-}
-
-@media (min-width: 1480px) {
-	.list {
-		@apply gap-x-0;
-	}
-}

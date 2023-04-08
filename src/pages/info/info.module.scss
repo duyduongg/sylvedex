@@ -5,13 +5,66 @@
 	@apply relative;
 	@apply grid;
 	@apply grid-cols-2;
-	@apply gap-x-16;
+
 	.list-section {
 		@apply flex;
 		@apply flex-col;
+		.api-src-issue-msg {
+			color: $color-primary-darker;
+			@apply font-medium;
+			@apply mb-4;
+		}
 	}
+}
 
-	.detail-section {
-		@apply mt-28;
+@media (min-width: 1720px) {
+	.info-page {
+		@apply gap-x-16;
+		.list-section {
+			.api-src-issue-msg {
+				@apply mb-4;
+			}
+		}
+
+		.detail-section {
+			@apply mt-28;
+		}
+	}
+}
+
+@media (max-width: 1720px) {
+	.info-page {
+		@apply gap-x-8;
+		.list-section {
+			.api-src-issue-msg {
+				@apply mb-2;
+				@apply text-base;
+			}
+		}
+		.detail-section {
+			@apply mt-28;
+		}
+	}
+}
+
+@media (max-width: 1480px) {
+	.info-page {
+		.detail-section {
+			@apply mt-20;
+		}
+	}
+}
+@media (max-width: 1280px) {
+	.info-page {
+		@apply gap-x-2;
+		.list-section {
+			.api-src-issue-msg {
+				@apply text-sm;
+				@apply mb-4;
+			}
+		}
+		.detail-section {
+			@apply mt-20;
+		}
 	}
 }

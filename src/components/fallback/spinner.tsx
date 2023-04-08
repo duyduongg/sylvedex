@@ -1,10 +1,13 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, useEffect } from 'react';
 import { MoonLoader } from 'react-spinners';
 
 const override: CSSProperties = {
 	display: 'block',
 	margin: '0 auto',
-	borderColor: 'red'
+	borderColor: 'red',
+	position: 'absolute',
+	top: '50%',
+	left: '50%'
 };
 
 export const Spinner = () => {

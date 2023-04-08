@@ -3,6 +3,7 @@ import { MoonLoader } from 'react-spinners';
 import fallback from '../../assets/fallback.svg';
 import { capitalize, CombinedAbilities, format } from '../../helpers/helpers';
 import { Pokemon } from '../../models/pokemon';
+import { Spinner } from '../fallback/spinner';
 import classes from './presentational-pokemon-detail.module.scss';
 export interface PresentationalPokemonDetailProps {
 	data: Pokemon;
@@ -10,7 +11,7 @@ export interface PresentationalPokemonDetailProps {
 }
 interface SubInfoSectionProps {
 	label: string;
-	info: number;
+	info: number | string;
 	unitMeasurement: string;
 }
 const SubInfoSection = ({ label, info, unitMeasurement }: SubInfoSectionProps) => {
@@ -19,7 +20,7 @@ const SubInfoSection = ({ label, info, unitMeasurement }: SubInfoSectionProps) =
 			<div className={classes['label']}>{label.toUpperCase()}</div>
 			<div className={classes['info']}>
 				<span>{info}</span>
-				<span>{unitMeasurement}</span>
+				{info !== 'N/A' && <span>{unitMeasurement}</span>}
 			</div>
 		</div>
 	);
@@ -30,7 +31,7 @@ export const PresentationalPokemonDetail = ({ data, combinedAbilities }: Present
 		<div className={classes['presentational-container']}>
 			{data.sprites.other['official-artwork'].front_default ? (
 				<div className={classes['pokemon-official-artwork']}>
-					<Suspense fallback={<MoonLoader />}>
+					<Suspense fallback={<Spinner />}>
 						<img src={data.sprites.other['official-artwork'].front_default} alt={`${data.name}-official-artwork`} />
 					</Suspense>
 				</div>
@@ -63,9 +64,13 @@ export const PresentationalPokemonDetail = ({ data, combinedAbilities }: Present
 				</div>
 			</div>
 			<div className={classes['sub-info']}>
-				<SubInfoSection label="Height" info={data.height / 10} unitMeasurement="m" />
+				<SubInfoSection label="Height" info={data.height ? data.height / 10 : 'N/A'} unitMeasurement="m" />
 				<SubInfoSection label="Weight" info={data.weight / 10} unitMeasurement="kg" />
-				<SubInfoSection label="Base Exp" info={data.base_experience} unitMeasurement="" />
+				<SubInfoSection
+					label="Base Exp"
+					info={data.base_experience ? data.base_experience : 'N/A'}
+					unitMeasurement=""
+				/>
 			</div>
 			<div className={classes['stats']}>
 				<div className={classes['label']}>STATS</div>

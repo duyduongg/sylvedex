@@ -24,7 +24,7 @@ export const Home = () => {
 
 					<div className={classes['action-btns']}>
 						<div className={classes['proceed']}>
-							<Link to="/pokemons/list" className={classes['action-btn']}>
+							<Link to="/pokemons" className={classes['action-btn']}>
 								<span>Try now</span>
 								<span className={classes['icon']}>
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">

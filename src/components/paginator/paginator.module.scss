@@ -58,3 +58,10 @@
 		@apply text-base;
 	}
 }
+
+@media (max-width: 1280px) {
+	.paginator {
+		@apply mt-8;
+		@apply text-sm;
+	}
+}

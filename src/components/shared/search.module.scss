@@ -58,3 +58,34 @@
 		}
 	}
 }
+
+@media (max-width: 1480px) {
+	.search-bar {
+		@apply mb-4;
+		.search-form {
+			.search-input {
+				height: 2.5rem;
+				text-indent: 1.5rem;
+				@apply text-base;
+			}
+			.search-btn {
+				padding: 0 2rem;
+				height: 2.5rem;
+				@apply text-xl;
+			}
+		}
+	}
+}
+
+@media (max-width: 1280px) {
+	.search-bar {
+		.search-form {
+			.search-input {
+				@apply text-sm;
+			}
+			.search-btn {
+				@apply text-base;
+			}
+		}
+	}
+}

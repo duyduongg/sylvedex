@@ -7,9 +7,13 @@ import { Spinner } from '../fallback/spinner';
 import { requestGettingAbilities } from '../../app/reducers/ability-slice';
 import { combineAbility, CombinedAbilities } from '../../helpers/helpers';
 
-export const ContainerPokemonDetail = () => {
-	const { data, id } = useAppSelector((state) => {
-		return { data: state.pokemonDetailState.data, id: state.pokemonDetailState.id };
+const ContainerPokemonDetail = () => {
+	const { data, id, isLoading } = useAppSelector((state) => {
+		return {
+			data: state.pokemonDetailState.data,
+			id: state.pokemonDetailState.id,
+			isLoading: state.pokemonDetailState.isLoading
+		};
 	});
 	const { abilities } = useAppSelector((state) => {
 		return { abilities: state.abilityState.data };
@@ -29,18 +33,19 @@ export const ContainerPokemonDetail = () => {
 
 	const [combinedAbilities, setCombinedAbilities] = useState<CombinedAbilities[]>([]);
 	useEffect(() => {
-		if (data !== undefined && abilities.length === 0) {
+		if (data !== undefined && abilities.length !== 0) {
 			setCombinedAbilities(combineAbility(data.abilities, abilities));
 		}
 	}, [abilities, data]);
 
 	return (
 		<div className={classes['detail-container']}>
-			<Suspense fallback={<Spinner />}>
-				{data && abilities.length !== 0 && (
-					<PresentationalPokemonDetail data={data} combinedAbilities={combinedAbilities} />
-				)}
-			</Suspense>
+			{data && !isLoading && abilities.length !== 0 && (
+				<PresentationalPokemonDetail data={data} combinedAbilities={combinedAbilities} />
+			)}
+			{(!data || isLoading) && <Spinner />}
 		</div>
 	);
 };
+
+export default ContainerPokemonDetail;

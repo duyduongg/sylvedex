@@ -36,7 +36,6 @@
 			@apply rounded-xl;
 			@apply font-medium;
 			@apply text-white;
-			@apply mx-2;
 		}
 	}
 }
@@ -69,6 +68,7 @@
 			.type {
 				@apply p-2;
 				@apply text-base;
+				@apply mx-2;
 			}
 		}
 	}
@@ -101,6 +101,7 @@
 			.type {
 				@apply text-sm;
 				@apply p-2;
+				@apply mx-2;
 			}
 		}
 	}
@@ -133,6 +134,41 @@
 			.type {
 				@apply text-xs;
 				padding: 0.5rem 0.25rem;
+				@apply rounded-lg;
+			}
+		}
+	}
+}
+
+@media (max-width: 1280px) {
+	.item-container {
+		@apply w-36;
+		@apply mt-14;
+		padding: 3rem 0.5rem 1rem 0.5rem;
+		.pokemon-official-art {
+			bottom: 72px;
+			left: 0;
+			transform: scale(0.6);
+			-ms-transform: scale(0.6);
+			-webkit-transform: scale(0.6);
+		}
+		.fallback-img {
+			bottom: 96px;
+			right: -15px;
+			transform: scale(0.6);
+			-ms-transform: scale(0.6);
+			-webkit-transform: scale(0.6);
+		}
+		.pokemon-name {
+			@apply text-sm;
+		}
+
+		.pokemon-type {
+			.type {
+				@apply text-xs;
+				padding: 0.5rem 0.25rem;
+				@apply rounded-lg;
+				@apply mx-1;
 			}
 		}
 	}
