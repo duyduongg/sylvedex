@@ -1,4 +1,4 @@
-# Pokédex
+# Sylvedex
 
 A simple pokédex website
 
