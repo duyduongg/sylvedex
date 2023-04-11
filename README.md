@@ -6,7 +6,7 @@ Features available:
   - Pagination,
   - Search Pokémon by name and id.
   - View Pokémon's detail information.
-Further features will be determined after deeper investigating public API process.
+* Further features will be determined after deeper investigating public API process.
 # API documentation
 
 - All of API calls endpoint belong to `https://pokeapi.co/`
