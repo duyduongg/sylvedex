@@ -4,14 +4,14 @@ import storage from 'redux-persist/lib/storage';
 import { Type } from '../../models';
 import { BaseSliceState, baseSliceInitialState } from '../base-slice-state';
 export interface TypeDetailState extends BaseSliceState {
-	data?: Type;
+	typeData?: Type;
 	id: number;
 }
 
 const typeDetailSlice = createSlice({
 	name: 'typeDetail',
 	initialState: {
-		data: undefined,
+		typeData: undefined,
 		id: 1,
 		...baseSliceInitialState
 	} as TypeDetailState,
@@ -20,7 +20,7 @@ const typeDetailSlice = createSlice({
 			state.isLoading = true;
 		},
 		completeGettingTypeDetail(state, action: PayloadAction<Type>) {
-			state.data = action.payload;
+			state.typeData = action.payload;
 			state.id = action.payload.id;
 			state.isLoading = false;
 		},
@@ -30,7 +30,7 @@ const typeDetailSlice = createSlice({
 			state.errorMessage = action.payload;
 		},
 		clearTypePokemon(state) {
-			state.data = undefined;
+			state.typeData = undefined;
 		}
 	}
 });
@@ -38,7 +38,7 @@ const typeDetailSlice = createSlice({
 export const detailPersistConfig = {
 	key: 'pokemon-detail',
 	storage,
-	whitelist: ['data', 'id']
+	whitelist: ['typeData', 'id']
 };
 
 export const { requestGettingTypeDetail, completeGettingTypeDetail, failedGettingTypeDetail, clearTypePokemon } =

@@ -37,7 +37,7 @@ function* getPaginationState() {
 function* getPokemons() {
 	try {
 		const state: { limit: number; offset: number; total: number } = yield getPaginationState();
-		const type = yield* appSelect((state) => state.typeDetailState.data);
+		const type = yield* appSelect((state) => state.typeDetailState.typeData);
 		const localStorageState = JSON.parse(localStorage.getItem('persist:pokemon') || '');
 
 		// Refetch if: Change page, first time fetching
@@ -70,7 +70,7 @@ function* getPokemonsWatcher() {
 
 function* getPokemonsFromArray() {
 	try {
-		const type = yield* appSelect((state) => state.typeDetailState.data);
+		const type = yield* appSelect((state) => state.typeDetailState.typeData);
 		const state: { limit: number; offset: number } = yield getPaginationState();
 		const pokemons: NamedApiResource[] = [];
 		if (type !== undefined) {

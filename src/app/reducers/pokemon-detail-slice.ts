@@ -6,7 +6,7 @@ import { Pokemon } from '../../models';
 import { baseSliceInitialState, BaseSliceState } from '../base-slice-state';
 
 interface PokemonDetailState extends BaseSliceState {
-	data?: Pokemon;
+	pokemonData?: Pokemon;
 	id: number;
 }
 
@@ -14,7 +14,7 @@ const pokemonDetailSlice = createSlice({
 	name: 'pokemon-detail',
 	initialState: {
 		...baseSliceInitialState,
-		data: undefined,
+		pokemonData: undefined,
 		id: 1
 	} as PokemonDetailState,
 	reducers: {
@@ -24,7 +24,7 @@ const pokemonDetailSlice = createSlice({
 		completeGettingPokemonDetail(state, action: PayloadAction<Pokemon>) {
 			state.isLoading = false;
 			state.isError = false;
-			state.data = action.payload;
+			state.pokemonData = action.payload;
 			state.id = action.payload.id;
 		},
 		errorGettingPokemonDetail(state, action: PayloadAction<string>) {
@@ -41,7 +41,7 @@ const pokemonDetailSlice = createSlice({
 export const detailPersistConfig = {
 	key: 'pokemon-detail',
 	storage,
-	whitelist: ['data', 'id']
+	whitelist: ['pokemonData', 'id']
 };
 
 export const {

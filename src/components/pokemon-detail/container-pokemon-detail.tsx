@@ -10,7 +10,7 @@ import { combineAbility, CombinedAbilities } from '../../helpers/helpers';
 const ContainerPokemonDetail = () => {
 	const { data, id, isLoading } = useAppSelector((state) => {
 		return {
-			data: state.pokemonDetailState.data,
+			data: state.pokemonDetailState.pokemonData,
 			id: state.pokemonDetailState.id,
 			isLoading: state.pokemonDetailState.isLoading
 		};

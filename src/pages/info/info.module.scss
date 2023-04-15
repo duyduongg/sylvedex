@@ -9,10 +9,16 @@
 	.list-section {
 		@apply flex;
 		@apply flex-col;
+		@apply relative;
 		.api-src-issue-msg {
 			color: $color-primary-darker;
 			@apply font-medium;
 			@apply mb-4;
+		}
+		.fallback {
+			@apply absolute;
+			top: 50%;
+			left: 50%;
 		}
 	}
 }

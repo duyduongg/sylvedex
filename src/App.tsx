@@ -19,7 +19,13 @@ function App() {
 					<Route
 						path="pokemons"
 						element={
-							<Suspense fallback={<Spinner />}>
+							<Suspense
+								fallback={
+									<div style={{ position: 'absolute', top: '50%', left: '50%' }}>
+										<Spinner />
+									</div>
+								}
+							>
 								<PokemonInfo />
 							</Suspense>
 						}

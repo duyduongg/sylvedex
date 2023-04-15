@@ -10,7 +10,7 @@ import { PresentationalPokemonList } from './presentational-pokemon-list';
 const ContainerPokemonList = () => {
 	const dispatch = useAppDispatch();
 	const { list, total, limit } = useAppSelector((state) => state.pokemonState);
-	const type = useAppSelector((state) => state.typeDetailState.data);
+	const type = useAppSelector((state) => state.typeDetailState.typeData);
 	const [currentPage, setCurrentPage] = useState(1);
 	useEffect(() => {
 		if (type !== undefined) {

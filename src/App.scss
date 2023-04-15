@@ -112,6 +112,7 @@
 	@apply grid;
 	@apply grid-cols-1;
 	grid-template-rows: 96px 1fr;
+	@apply relative;
 }
 
 main {
