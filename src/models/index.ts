@@ -1,0 +1,14 @@
+export { type AbilityResource } from './ability-resource';
+export { type BaseEntity } from './base-entity';
+export { type NamedApiResourceList } from './named-api-resource-list';
+export { type Pokemon } from './pokemon';
+export { type PokemonType } from './pokemon-type';
+export { type Sprite } from './sprite';
+export { type Stat } from './stat';
+export { type Type } from './type';
+export { type Pokedex } from './pokedex';
+export { fallbackAbility, type Ability } from './ability';
+export { fallbackAbilityEffectChange, type AbilityEffectChange } from './ability-effect-change';
+export { fallbackVerboseAbilityEffect, type VerboseAbilityEffect } from './verbose-ability-effect';
+export { fallbackNamedApiResource, type NamedApiResource } from './named-api-resource';
+export { fallbackEffect, type Effect } from './effect';

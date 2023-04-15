@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { all, call, put, take } from 'redux-saga/effects';
-import { Pokemon } from '../../models/pokemon';
+import { Pokemon } from '../../models';
 import { pokemonServices } from '../../services/pokemon-service';
 import { pokemonDetailActions } from '../reducers/pokemon-detail-slice';
 

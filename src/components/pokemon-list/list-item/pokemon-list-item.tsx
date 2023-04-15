@@ -1,12 +1,11 @@
-import { Suspense } from 'react';
-import { Link } from 'react-router-dom';
+import { Suspense, useCallback } from 'react';
 import { MoonLoader } from 'react-spinners';
-import { Pokemon } from '../../../models/pokemon';
-import classes from './pokemon-list-item.module.scss';
-import fallback from '../../../assets/fallback.svg';
 import { useAppDispatch } from '../../../app/hooks';
 import { setCurrentDetailId } from '../../../app/reducers/pokemon-detail-slice';
+import fallback from '../../../assets/fallback.svg';
 import { capitalize } from '../../../helpers/helpers';
+import { Pokemon } from '../../../models';
+import classes from './pokemon-list-item.module.scss';
 export interface PokemonListItemProps {
 	data: Pokemon;
 }
@@ -16,6 +15,13 @@ export const PokemonListItem = ({ data }: PokemonListItemProps) => {
 	const handleItemClicked = (id: number) => {
 		dispatch(setCurrentDetailId(id));
 	};
+
+	const capitalizeString = useCallback(
+		(str: string) => {
+			return capitalize(str);
+		},
+		[data]
+	);
 	return (
 		<div className={classes['item-mask']}>
 			<button className={classes['item-container']} onClick={() => handleItemClicked(data.id)}>
@@ -34,14 +40,14 @@ export const PokemonListItem = ({ data }: PokemonListItemProps) => {
 				<div className={classes['pokemon-id']}>
 					N<span>&#7506;</span> {data.id}
 				</div>
-				<div className={classes['pokemon-name']}>{capitalize(data.name)}</div>
+				<div className={classes['pokemon-name']}>{capitalizeString(data.name)}</div>
 				<div className={classes['pokemon-type']}>
 					<div className={`type-${data.types[0].type.name} ${classes['type']}`}>
-						{capitalize(data.types[0].type.name)}
+						{capitalizeString(data.types[0].type.name)}
 					</div>
 					{data.types[1] && (
 						<div className={`type-${data.types[1].type.name} ${classes['type']}  `}>
-							{capitalize(data.types[1].type.name)}
+							{capitalizeString(data.types[1].type.name)}
 						</div>
 					)}
 				</div>

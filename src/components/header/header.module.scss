@@ -26,18 +26,24 @@ header {
 			a {
 				@apply mx-8;
 				@apply relative;
-				&.active {
+				&::before {
+					content: '';
+					@apply absolute;
+					height: 3px;
+					bottom: -30px;
+					left: 50%;
+					margin: 0 auto;
+					@apply w-0;
+					height: 3px;
+					background-color: $color-primary-darker;
+					transform: translate(-50%, 0);
+					transition: width 150ms ease-in-out;
+				}
+				&.active,
+				&:hover {
 					&::before {
-						content: '';
-						@apply absolute;
-						width: calc(100% + 40px);
-						height: 3px;
-						bottom: -30px;
-						left: -20px;
-						background-color: $color-primary-darker;
-						@apply visible;
-						-webkit-transform: scaleX(1);
-						transform: scaleX(1);
+						width: calc(100% + 20px);
+						transform-origin: center;
 					}
 				}
 			}
@@ -63,6 +69,12 @@ header {
 			margin: 0 1rem 0 1rem;
 			width: 24px;
 			height: auto;
+			transition: transform 150ms ease-in-out;
+			&:hover {
+				transform: scale(1.25);
+				-ms-transform: scale(1.25);
+				-webkit-transform: scale(1.25);
+			}
 		}
 	}
 }

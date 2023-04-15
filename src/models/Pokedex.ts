@@ -1,5 +1,4 @@
-import { BaseEntity } from './base-entity';
-import { NamedApiResource } from './named-api-resource';
+import { BaseEntity, NamedApiResource } from '.';
 
 export interface Pokedex extends BaseEntity {
 	is_main_series: boolean;

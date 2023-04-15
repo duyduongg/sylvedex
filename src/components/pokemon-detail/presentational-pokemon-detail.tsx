@@ -1,8 +1,7 @@
-import { Suspense } from 'react';
-import { MoonLoader } from 'react-spinners';
+import { Suspense, useCallback } from 'react';
 import fallback from '../../assets/fallback.svg';
 import { capitalize, CombinedAbilities, format } from '../../helpers/helpers';
-import { Pokemon } from '../../models/pokemon';
+import { Pokemon, Stat } from '../../models';
 import { Spinner } from '../fallback/spinner';
 import classes from './presentational-pokemon-detail.module.scss';
 export interface PresentationalPokemonDetailProps {
@@ -27,6 +26,29 @@ const SubInfoSection = ({ label, info, unitMeasurement }: SubInfoSectionProps) =
 };
 
 export const PresentationalPokemonDetail = ({ data, combinedAbilities }: PresentationalPokemonDetailProps) => {
+	const formatString = useCallback(
+		(str: string) => {
+			return format(str);
+		},
+		[data]
+	);
+
+	const capitalizeString = useCallback(
+		(str: string) => {
+			return capitalize(str);
+		},
+		[data]
+	);
+
+	const getTotalStat = useCallback((stats: Stat[]) => {
+		let a: number[] = [];
+		stats.forEach((stat) => {
+			a.push(stat.base_stat);
+		});
+		return a.reduce((acc, cur) => {
+			return acc + cur;
+		}, 0);
+	}, []);
 	return (
 		<div className={classes['presentational-container']}>
 			{data.sprites.other['official-artwork'].front_default ? (
@@ -41,14 +63,14 @@ export const PresentationalPokemonDetail = ({ data, combinedAbilities }: Present
 				</div>
 			)}
 			<div className={classes['pokemon-id']}>#{data.id}</div>
-			<div className={classes['pokemon-name']}>{capitalize(data.name)}</div>
+			<div className={classes['pokemon-name']}>{capitalizeString(data.name)}</div>
 			<div className={classes['pokemon-type']}>
 				<div className={`type-${data.types[0].type.name} ${classes['type']}`}>
-					{capitalize(data.types[0].type.name)}
+					{capitalizeString(data.types[0].type.name)}
 				</div>
 				{data.types[1] && (
 					<div className={`type-${data.types[1].type.name} ${classes['type']}  `}>
-						{capitalize(data.types[1].type.name)}
+						{capitalizeString(data.types[1].type.name)}
 					</div>
 				)}
 			</div>
@@ -73,12 +95,12 @@ export const PresentationalPokemonDetail = ({ data, combinedAbilities }: Present
 				/>
 			</div>
 			<div className={classes['stats']}>
-				<div className={classes['label']}>STATS</div>
+				<div className={classes['label']}>STATS ( /255 )</div>
 				<div className={classes['stats-container']}>
 					{data.stats.map((stat, idx) => (
 						<div className={classes['stat-container']} key={idx}>
 							<div className={classes['numeric-value']}>
-								<div className={classes['stat-name']}>{format(stat.stat.name)}:</div>
+								<div className={classes['stat-name']}>{formatString(stat.stat.name)}:</div>
 								<div className={classes['base-stat']}>{stat.base_stat}</div>
 							</div>
 							<div
@@ -87,6 +109,12 @@ export const PresentationalPokemonDetail = ({ data, combinedAbilities }: Present
 							></div>
 						</div>
 					))}
+					<div className={classes['stat-container']}>
+						<div className={classes['numeric-value']}>
+							<div className={classes['stat-name']}>Total:</div>
+							<div className={classes['base-stat']}>{getTotalStat(data.stats)}</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -38,6 +38,7 @@
 					@apply rounded-full;
 					@apply inline-block;
 					font-size: 1.5em;
+					transition: background-color 150ms ease-in-out;
 					.action-btn {
 						@apply flex;
 						@apply flex-row;
@@ -46,6 +47,10 @@
 						span:first-child {
 							margin-right: 4px;
 						}
+					}
+
+					&:hover {
+						background-color: hsl(223, 60%, 39%);
 					}
 				}
 			}

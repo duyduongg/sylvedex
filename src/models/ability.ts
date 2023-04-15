@@ -1,5 +1,9 @@
-import { AbilityEffectChange, fallbackAbilityEffectChange } from './ability-effect-change';
-import { fallbackVerboseAbilityEffect, VerboseAbilityEffect } from './verbose-ability-effect';
+import {
+	AbilityEffectChange,
+	fallbackAbilityEffectChange,
+	fallbackVerboseAbilityEffect,
+	VerboseAbilityEffect
+} from '.';
 
 export interface Ability {
 	id: number;

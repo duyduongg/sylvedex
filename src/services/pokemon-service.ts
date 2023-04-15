@@ -1,5 +1,5 @@
-import { NamedApiResourceList } from '../models/named-api-resource-list';
-import { Pokemon } from '../models/pokemon';
+import { NamedApiResourceList } from '../models';
+import { Pokemon } from '../models';
 import httpClient from './http-client';
 
 export const pokemonServices = {

@@ -1,7 +1,5 @@
-import { PayloadAction } from '@reduxjs/toolkit';
-import { all, call, fork, put, take } from 'redux-saga/effects';
-import { NamedApiResourceList } from '../../models/named-api-resource-list';
-import { Pokemon } from '../../models/pokemon';
+import { all, call, put, take } from 'redux-saga/effects';
+import { NamedApiResourceList, Pokemon } from '../../models';
 import { pokemonServices } from '../../services/pokemon-service';
 import { appSelect } from '../hooks';
 import { pokemonActions } from '../reducers/pokemon-slice';

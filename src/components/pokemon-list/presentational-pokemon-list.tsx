@@ -1,4 +1,4 @@
-import { Pokemon } from '../../models/pokemon';
+import { Pokemon } from '../../models';
 import { PokemonListItem } from './list-item/pokemon-list-item';
 import classes from './presentational-pokemon-list.module.scss';
 

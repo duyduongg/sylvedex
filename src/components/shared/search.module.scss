@@ -19,6 +19,10 @@
 			@apply rounded-br-full;
 			top: 0;
 			right: 0;
+			transition: background-color 150ms ease-in-out;
+			&:hover {
+				background-color: hsl(223, 60%, 39%);
+			}
 		}
 	}
 }

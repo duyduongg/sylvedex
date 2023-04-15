@@ -1,5 +1,4 @@
-import { Effect, fallbackEffect } from './effect';
-import { NamedApiResource } from './named-api-resource';
+import { Effect, fallbackEffect } from '.';
 
 export interface VerboseAbilityEffect extends Effect {
 	short_effect: string;

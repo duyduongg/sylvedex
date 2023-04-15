@@ -43,7 +43,11 @@ const ContainerPokemonDetail = () => {
 			{data && !isLoading && abilities.length !== 0 && (
 				<PresentationalPokemonDetail data={data} combinedAbilities={combinedAbilities} />
 			)}
-			{(!data || isLoading) && <Spinner />}
+			{(!data || isLoading) && (
+				<div className={classes['fallback']}>
+					<Spinner />
+				</div>
+			)}
 		</div>
 	);
 };

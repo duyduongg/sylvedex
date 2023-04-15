@@ -1,8 +1,4 @@
-import { AbilityResource } from './ability-resource';
-import { BaseEntity } from './base-entity';
-import { Sprite } from './sprite';
-import { Stat } from './stat';
-import { PokemonType } from './type';
+import { PokemonType, BaseEntity, AbilityResource, Sprite, Stat } from '.';
 
 export interface Pokemon extends BaseEntity {
 	base_experience: number;

@@ -1,5 +1,4 @@
-import { Effect, fallbackEffect } from './effect';
-import { fallbackNamedApiResource, NamedApiResource } from './named-api-resource';
+import { Effect, fallbackEffect, fallbackNamedApiResource, NamedApiResource } from './';
 
 export interface AbilityEffectChange {
 	effect_entries: Effect;

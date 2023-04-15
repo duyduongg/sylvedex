@@ -1,15 +1,5 @@
-import { CSSProperties, useEffect } from 'react';
-import { MoonLoader } from 'react-spinners';
-
-const override: CSSProperties = {
-	display: 'block',
-	margin: '0 auto',
-	borderColor: 'red',
-	position: 'absolute',
-	top: '50%',
-	left: '50%'
-};
+import { PuffLoader } from 'react-spinners';
 
 export const Spinner = () => {
-	return <MoonLoader color="#3c5aa6" loading={true} cssOverride={override} aria-label="loading-spinner" />;
+	return <PuffLoader color="#3c5aa6" loading={true} aria-label="loading-spinner" />;
 };

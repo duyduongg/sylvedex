@@ -1,5 +1,6 @@
 @import '../../variables.scss';
 .detail-container {
+	@apply relative;
 	font-family: 'Montserrat', sans-serif;
 	@apply rounded-3xl;
 	@apply bg-white;
@@ -7,9 +8,14 @@
 	@apply grid;
 	@apply flex-col;
 	@apply text-center;
-
 	@apply mt-12;
 	color: $color-black;
+
+	.fallback {
+		@apply absolute;
+		top: 35%;
+		left: 50%;
+	}
 }
 
 @media (min-width: 1720px) {

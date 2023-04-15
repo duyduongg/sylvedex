@@ -1,4 +1,4 @@
-import { NamedApiResource } from './named-api-resource';
+import { NamedApiResource } from '.';
 
 export interface NamedApiResourceList {
 	count: number;

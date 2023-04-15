@@ -1,4 +1,4 @@
-import { Ability } from '../models/ability';
+import { Ability } from '../models';
 import httpClient from './http-client';
 
 export const abilityServies = {

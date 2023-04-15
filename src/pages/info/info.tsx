@@ -11,8 +11,8 @@ const PokemonInfo = () => {
 			<div className={classes['list-section']}>
 				<Search />
 				<div className={classes['api-src-issue-msg']}>
-					* Due to inaccuracy of data provided by PokéApi, data of Sword and Shield (Generation 9), some pokémon
-					information may be displayed not as expected.
+					* Due to inaccuracy of data provided by PokéApi, some pokémons' information of Sword and Shield (Generation 9)
+					may be displayed not as expected.
 				</div>
 				<Suspense fallback={<Spinner />}>
 					<ContainerPokemonList />

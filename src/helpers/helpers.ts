@@ -1,5 +1,4 @@
-import { Ability } from '../models/ability';
-import { AbilityResource } from '../models/ability-resource';
+import { Ability, AbilityResource } from '../models';
 
 export const capitalize = (name: string) => {
 	return name.at(0)?.toUpperCase() + name.slice(1);

@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { all, call, put, take } from 'redux-saga/effects';
-import { Ability, fallbackAbility } from '../../models/ability';
+import { Ability, fallbackAbility } from '../../models';
 import { abilityServies } from '../../services/ability-service';
 import { abilityAction } from '../reducers/ability-slice';
 
