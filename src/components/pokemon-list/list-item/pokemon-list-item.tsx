@@ -3,7 +3,7 @@ import { MoonLoader } from 'react-spinners';
 import { useAppDispatch } from '../../../app/hooks';
 import { setCurrentDetailId } from '../../../app/reducers/pokemon-detail-slice';
 import fallback from '../../../assets/fallback.svg';
-import { capitalize } from '../../../helpers/helpers';
+import { capitalize, format } from '../../../helpers/helpers';
 import { Pokemon } from '../../../models';
 import classes from './pokemon-list-item.module.scss';
 export interface PokemonListItemProps {
@@ -16,12 +16,9 @@ export const PokemonListItem = ({ data }: PokemonListItemProps) => {
 		dispatch(setCurrentDetailId(id));
 	};
 
-	const capitalizeString = useCallback(
-		(str: string) => {
-			return capitalize(str);
-		},
-		[data]
-	);
+	const capitalizeString = useCallback((str: string) => capitalize(str), [data]);
+
+	const formatString = useCallback((str: string) => format(str), [data]);
 	return (
 		<div className={classes['item-mask']}>
 			<button className={classes['item-container']} onClick={() => handleItemClicked(data.id)}>
@@ -40,7 +37,7 @@ export const PokemonListItem = ({ data }: PokemonListItemProps) => {
 				<div className={classes['pokemon-id']}>
 					N<span>&#7506;</span> {data.id}
 				</div>
-				<div className={classes['pokemon-name']}>{capitalizeString(data.name)}</div>
+				<div className={classes['pokemon-name']}>{formatString(capitalizeString(data.name))}</div>
 				<div className={classes['pokemon-type']}>
 					<div className={`type-${data.types[0].type.name} ${classes['type']}`}>
 						{capitalizeString(data.types[0].type.name)}

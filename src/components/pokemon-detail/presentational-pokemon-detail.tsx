@@ -63,7 +63,7 @@ export const PresentationalPokemonDetail = ({ data, combinedAbilities }: Present
 				</div>
 			)}
 			<div className={classes['pokemon-id']}>#{data.id}</div>
-			<div className={classes['pokemon-name']}>{capitalizeString(data.name)}</div>
+			<div className={classes['pokemon-name']}>{formatString(capitalizeString(data.name))}</div>
 			<div className={classes['pokemon-type']}>
 				<div className={`type-${data.types[0].type.name} ${classes['type']}`}>
 					{capitalizeString(data.types[0].type.name)}

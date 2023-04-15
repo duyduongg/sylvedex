@@ -1,11 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { pokemonState } from './pokemon-slice';
-import { abilityState } from './ability-slice';
-import { pokemonDetailState } from './pokemon-detail-slice';
+import { abilityState, pokemonDetailState, pokemonState, typeDetailState } from '.';
 
 export const rootReducer = combineReducers({
 	pokemonState: pokemonState,
 	pokemonDetailState: pokemonDetailState,
-	abilityState: abilityState
+	abilityState: abilityState,
+	typeDetailState: typeDetailState
 });
 export type RootReducer = ReturnType<typeof rootReducer>;

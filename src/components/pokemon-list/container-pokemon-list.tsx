@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { requestGettingPokemons } from '../../app/reducers/pokemon-slice';
+import { requestGettingPokemons, requestGettingPokemonsFromArray } from '../../app/reducers/pokemon-slice';
+import { clearTypePokemon } from '../../app/reducers/type-slice';
 import { Spinner } from '../fallback/spinner';
 import { Paginator } from '../paginator/paginator';
 import classes from './container-pokemon-list.module.scss';
@@ -8,11 +9,16 @@ import { PresentationalPokemonList } from './presentational-pokemon-list';
 
 const ContainerPokemonList = () => {
 	const dispatch = useAppDispatch();
-	const { list, isLoading, total, limit } = useAppSelector((state) => state.pokemonState);
+	const { list, total, limit } = useAppSelector((state) => state.pokemonState);
+	const type = useAppSelector((state) => state.typeDetailState.data);
 	const [currentPage, setCurrentPage] = useState(1);
 	useEffect(() => {
-		dispatch(requestGettingPokemons(currentPage));
-	}, [currentPage]);
+		if (type !== undefined) {
+			dispatch(requestGettingPokemonsFromArray(currentPage));
+		} else {
+			dispatch(requestGettingPokemons(currentPage));
+		}
+	}, [currentPage, type]);
 
 	const handlePageChange = (pageNumber: number) => {
 		if (pageNumber !== currentPage) {

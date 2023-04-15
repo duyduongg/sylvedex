@@ -1,12 +1,12 @@
 import {
 	AbilityEffectChange,
+	BaseEntity,
 	fallbackAbilityEffectChange,
 	fallbackVerboseAbilityEffect,
 	VerboseAbilityEffect
 } from '.';
 
-export interface Ability {
-	id: number;
+export interface Ability extends BaseEntity {
 	name: string;
 	effect_entries: VerboseAbilityEffect[];
 	effect_changes: AbilityEffectChange[];

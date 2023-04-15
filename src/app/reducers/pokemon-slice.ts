@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
-import { Pokemon } from '../../models';
+import { Pokemon } from '../../models/pokemon';
 import { baseSliceInitialState, BaseSliceState } from '../base-slice-state';
 interface PokemonState extends BaseSliceState {
 	limit: number;
@@ -9,17 +9,26 @@ interface PokemonState extends BaseSliceState {
 	list: Pokemon[];
 	total: number;
 }
+
+const initialState: PokemonState = {
+	...baseSliceInitialState,
+	list: [],
+	limit: 12,
+	offset: 0,
+	total: 0
+};
 const pokemonSlice = createSlice({
 	name: 'pokemon',
-	initialState: {
-		...baseSliceInitialState,
-		list: [],
-		limit: 12,
-		offset: 0,
-		total: 0
-	} as PokemonState,
+	initialState,
 	reducers: {
 		requestGettingPokemons(state, action: PayloadAction<number | undefined>) {
+			state.isLoading = true;
+			let factor = action.payload;
+			if (factor) {
+				state.offset = factor >= 0 ? (factor - 1) * state.limit : 0;
+			}
+		},
+		requestGettingPokemonsFromArray(state, action: PayloadAction<number | undefined>) {
 			state.isLoading = true;
 			let factor = action.payload;
 			if (factor) {
@@ -36,6 +45,9 @@ const pokemonSlice = createSlice({
 			state.isLoading = false;
 			state.isError = true;
 			state.errorMessage = action.payload;
+		},
+		resetOffset(state) {
+			state.offset = initialState.offset;
 		}
 	}
 });
@@ -46,6 +58,11 @@ const pokemonPersistConfig = {
 	whitelist: ['list', 'offset', 'total']
 };
 
-export const { requestGettingPokemons, completeGettingPokemons, errorGettingPokemons } = pokemonSlice.actions;
+export const {
+	requestGettingPokemons,
+	requestGettingPokemonsFromArray,
+	completeGettingPokemons,
+	errorGettingPokemons
+} = pokemonSlice.actions;
 export const pokemonActions = pokemonSlice.actions;
 export const pokemonState = persistReducer(pokemonPersistConfig, pokemonSlice.reducer);

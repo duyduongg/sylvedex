@@ -1,7 +1,5 @@
 import { all } from 'redux-saga/effects';
-import { pokemonSaga } from './pokemon-saga';
-import { abilitySaga } from './ability-saga';
-import { pokemonDetailSaga } from './pokemon-detail-saga';
+import { abilitySaga, pokemonDetailSaga, pokemonSaga, typeDetailSaga } from '.';
 export default function* rootSaga() {
-	yield all([pokemonSaga(), pokemonDetailSaga(), abilitySaga()]);
+	yield all([pokemonSaga(), pokemonDetailSaga(), abilitySaga(), typeDetailSaga()]);
 }
