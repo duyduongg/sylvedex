@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v1
       - run: npm
       - run: npm run build
-    uses: duyduongg/sylvedex@main
+    uses: ./.github/workflows/dev.workflow.yml
     with:
       args: --acl public-read --follow-symlinks --delete
     env:
