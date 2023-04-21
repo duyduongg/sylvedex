@@ -1,5 +1,6 @@
 import { CombinedAbility } from '../../../helpers/helpers';
 import classes from './presentational-ability.module.scss';
+import React from 'react';
 export interface PresentationalAbilityProps {
 	ability: CombinedAbility;
 }

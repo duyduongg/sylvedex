@@ -23,14 +23,14 @@ const pokemonSlice = createSlice({
 	reducers: {
 		requestGettingPokemons(state, action: PayloadAction<number | undefined>) {
 			state.isLoading = true;
-			let factor = action.payload;
+			const factor = action.payload;
 			if (factor) {
 				state.offset = factor >= 0 ? (factor - 1) * state.limit : 0;
 			}
 		},
 		requestGettingPokemonsFromArray(state, action: PayloadAction<number | undefined>) {
 			state.isLoading = true;
-			let factor = action.payload;
+			const factor = action.payload;
 			if (factor) {
 				state.offset = factor >= 0 ? (factor - 1) * state.limit : 0;
 			}

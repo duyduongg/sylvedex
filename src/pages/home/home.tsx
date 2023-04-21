@@ -1,6 +1,4 @@
-import { faFacebookSquare, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import background from '../../assets/background.svg';
 import mascot from '../../assets/mascot.png';
@@ -15,7 +13,7 @@ export const Home = () => {
 				<div className={classes['intro-texts']}>
 					<h1 className={classes['intro']}>A simple self-made pokémons index</h1>
 					<p className={classes['description']}>
-						Display information about Pokémons' name, images, types as well as their original generations
+						Display information about Pokémons name, images, types as well as their original generations
 					</p>
 					<div className={classes['copyright']}>
 						<div>API are © by Paul Hallet 2013 - 2021 and PokéAPI contributors</div>

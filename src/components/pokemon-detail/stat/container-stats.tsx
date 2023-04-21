@@ -2,13 +2,14 @@ import { useCallback } from 'react';
 import { Stat } from '../../../models';
 import { PresentationalStat } from './presentational-stat';
 import classes from './container-stats.module.scss';
+import React from 'react';
 export interface ContainerStatsProps {
 	stats: Stat[];
 	formatString: (str: string) => string;
 }
 export const ContainerStats = ({ stats, formatString }: ContainerStatsProps) => {
 	const getTotalStat = useCallback((stats: Stat[]) => {
-		let a: number[] = [];
+		const a: number[] = [];
 		stats.forEach((stat) => {
 			a.push(stat.base_stat);
 		});

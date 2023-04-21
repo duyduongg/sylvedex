@@ -4,10 +4,9 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import logo from '../../assets/logo.png';
 import classes from './header.module.scss';
+import React from 'react';
 export const Header = () => {
 	const location = useLocation();
-	const dispatch = useAppDispatch();
-
 	return (
 		<header className={`${location.pathname === '/' ? `${classes['main']}` : ''}`}>
 			<div className={classes['content']}>

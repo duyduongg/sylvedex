@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Spinner } from '../../components/fallback/spinner';
 import { Search } from '../../components/shared/search';
 import classes from './info.module.scss';
-
+import React from 'react';
 const ContainerPokemonList = lazy(() => import('../../components/pokemon-list/container-pokemon-list'));
 const ContainerPokemonDetail = lazy(() => import('../../components/pokemon-detail/container-pokemon-detail'));
 const PokemonInfo = () => {
@@ -11,7 +11,7 @@ const PokemonInfo = () => {
 			<div className={classes['list-section']}>
 				<Search />
 				<div className={classes['api-src-issue-msg']}>
-					* Due to inaccuracy of data provided by PokéApi, some pokémons' information of Sword and Shield (Generation 9)
+					* Due to inaccuracy of data provided by PokéApi, some pokémons information of Sword and Shield (Generation 9)
 					may be displayed not as expected.
 				</div>
 				<Suspense fallback={<Spinner />}>

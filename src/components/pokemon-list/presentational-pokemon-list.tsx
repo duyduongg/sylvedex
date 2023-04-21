@@ -1,7 +1,7 @@
 import { Pokemon } from '../../models';
 import { ContainerPokemonListItem } from './list-item/container-pokemon-list-item';
 import classes from './presentational-pokemon-list.module.scss';
-
+import React from 'react';
 export interface PresentationalPokemonListProps {
 	pokemons: Pokemon[];
 }

@@ -1,6 +1,7 @@
 import { CombinedAbility } from '../../../helpers/helpers';
 import classes from './container-abilities.module.scss';
 import { PresentationalAbility } from './presentational-ability';
+import React from 'react';
 export interface ContainerAbilitiesProps {
 	abilities: CombinedAbility[];
 }
