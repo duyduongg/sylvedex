@@ -1,0 +1,30 @@
+.pokemon-type {
+	@apply self-center;
+	@apply flex;
+	@apply flex-row;
+	@apply justify-self-center;
+}
+
+@media (min-width: 1720px) {
+	.pokemon-type {
+		@apply mt-4;
+	}
+}
+
+@media (max-width: 1719px) {
+	.pokemon-type {
+		@apply mt-4;
+	}
+}
+
+@media (max-width: 1480px) {
+	.pokemon-type {
+		@apply mt-2;
+	}
+}
+
+@media (max-width: 1280px) {
+	.pokemon-type {
+		@apply mt-1;
+	}
+}

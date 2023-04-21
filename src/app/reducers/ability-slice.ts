@@ -40,4 +40,4 @@ const abilityPersistConfig = {
 
 export const { requestGettingAbilities, completeGettingAbilities, errorGettingAbilities } = abilitySlice.actions;
 export const abilityAction = abilitySlice.actions;
-export const abilityState = persistReducer(abilityPersistConfig, abilitySlice.reducer);
+export const abilityReducer = persistReducer(abilityPersistConfig, abilitySlice.reducer);

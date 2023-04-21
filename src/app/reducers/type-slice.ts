@@ -1,47 +1,43 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { Type } from '../../models';
-import { BaseSliceState, baseSliceInitialState } from '../base-slice-state';
-export interface TypeDetailState extends BaseSliceState {
-	typeData?: Type;
-	id: number;
+import { NamedApiResource } from '../../models';
+import { baseSliceInitialState, BaseSliceState } from '../base-slice-state';
+
+export interface TypesState extends BaseSliceState {
+	types: NamedApiResource[];
 }
 
-const typeDetailSlice = createSlice({
-	name: 'typeDetail',
-	initialState: {
-		typeData: undefined,
-		id: 1,
-		...baseSliceInitialState
-	} as TypeDetailState,
+const typesInitialState: TypesState = {
+	...baseSliceInitialState,
+	types: []
+};
+
+const typesSlice = createSlice({
+	name: 'types',
+	initialState: typesInitialState,
 	reducers: {
-		requestGettingTypeDetail(state, action: PayloadAction<string>) {
+		requestGettingTypes(state) {
 			state.isLoading = true;
 		},
-		completeGettingTypeDetail(state, action: PayloadAction<Type>) {
-			state.typeData = action.payload;
-			state.id = action.payload.id;
+		completeGettingTypes(state, action: PayloadAction<NamedApiResource[]>) {
 			state.isLoading = false;
+			state.types = action.payload;
 		},
-		failedGettingTypeDetail(state, action: PayloadAction<string>) {
+		failedGettingTypes(state, action: PayloadAction<string>) {
 			state.isLoading = false;
 			state.isError = true;
 			state.errorMessage = action.payload;
-		},
-		clearTypePokemon(state) {
-			state.typeData = undefined;
 		}
 	}
 });
 
-export const detailPersistConfig = {
-	key: 'pokemon-detail',
+export const typesPersistConfig = {
+	key: 'types',
 	storage,
-	whitelist: ['typeData', 'id']
+	whitelist: ['types']
 };
 
-export const { requestGettingTypeDetail, completeGettingTypeDetail, failedGettingTypeDetail, clearTypePokemon } =
-	typeDetailSlice.actions;
-export const typeDetailActions = typeDetailSlice.actions;
-export const typeDetailState = persistReducer(detailPersistConfig, typeDetailSlice.reducer);
+export const { requestGettingTypes, completeGettingTypes, failedGettingTypes } = typesSlice.actions;
+export const typesActions = typesSlice.actions;
+export const typesReducer = persistReducer(typesPersistConfig, typesSlice.reducer);

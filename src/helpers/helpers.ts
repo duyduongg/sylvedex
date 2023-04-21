@@ -11,12 +11,12 @@ export const format = (name: string) => {
 		.join(' ');
 };
 
-export interface CombinedAbilities {
+export interface CombinedAbility {
 	name: string;
 	description: string;
 }
 
-export const combineAbility = (resource: AbilityResource[], abilities: Ability[]): CombinedAbilities[] => {
+export const combineAbility = (resource: AbilityResource[], abilities: Ability[]): CombinedAbility[] => {
 	if (resource.length === 0 || abilities.length === 0) {
 		return [];
 	}
@@ -37,5 +37,5 @@ export const combineAbility = (resource: AbilityResource[], abilities: Ability[]
 	const map = new Map();
 	abilitiesNames.forEach((item) => map.set(item.name, item));
 	abilitiesDescription.forEach((item) => map.set(item.name, { ...map.get(item.name), ...item }));
-	return Array.from(map.values()) as CombinedAbilities[];
+	return Array.from(map.values()) as CombinedAbility[];
 };

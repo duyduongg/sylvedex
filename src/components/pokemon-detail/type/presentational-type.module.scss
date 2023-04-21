@@ -1,0 +1,38 @@
+.type {
+	@apply rounded-xl;
+	@apply font-medium;
+	@apply text-white;
+	@apply mx-2;
+}
+
+@media (min-width: 1720px) {
+	.type {
+		@apply w-40;
+		@apply text-xl;
+		@apply py-3;
+	}
+}
+
+@media (max-width: 1719px) {
+	.type {
+		@apply w-36;
+		@apply text-lg;
+		@apply py-2;
+	}
+}
+
+@media (max-width: 1480px) {
+	.type {
+		@apply w-32;
+		@apply text-base;
+		@apply py-2;
+	}
+}
+
+@media (max-width: 1280px) {
+	.type {
+		@apply w-28;
+		@apply text-sm;
+		@apply py-2;
+	}
+}

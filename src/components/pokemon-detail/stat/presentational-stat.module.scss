@@ -1,0 +1,72 @@
+@import '../../../variables.scss';
+.stat-container {
+	@apply my-2;
+	@apply grid;
+	@apply justify-self-center;
+	.numeric-value {
+		@apply grid;
+		@apply font-medium;
+		.stat-name {
+			@apply text-left;
+		}
+	}
+	.chart {
+		@apply rounded-sm;
+	}
+}
+
+@media (min-width: 1720px) {
+	.stat-container {
+		grid-template-columns: 16rem 255px;
+		.numeric-value {
+			@apply grid-cols-5;
+			@apply text-2xl;
+			.stat-name {
+				@apply col-span-4;
+			}
+		}
+
+		.chart {
+			transition: width 150ms ease-in-out;
+		}
+	}
+}
+
+@media (max-width: 1719px) {
+	.stat-container {
+		grid-template-columns: 14rem 255px;
+		.numeric-value {
+			@apply grid-cols-12;
+			@apply text-xl;
+			.stat-name {
+				@apply col-span-10;
+			}
+		}
+	}
+}
+
+@media (max-width: 1480px) {
+	.stat-container {
+		grid-template-columns: 12rem 255px;
+		.numeric-value {
+			@apply grid-cols-12;
+			@apply text-lg;
+			.stat-name {
+				@apply col-span-10;
+			}
+		}
+	}
+}
+
+@media (max-width: 1280px) {
+	.stat-container {
+		grid-template-columns: 12rem 255px;
+		.numeric-value {
+			@apply grid-cols-12;
+			@apply text-base;
+			.stat-name {
+				@apply col-span-10;
+			}
+		}
+	}
+}

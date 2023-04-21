@@ -51,4 +51,4 @@ export const {
 	setCurrentDetailId
 } = pokemonDetailSlice.actions;
 export const pokemonDetailActions = pokemonDetailSlice.actions;
-export const pokemonDetailState = persistReducer(detailPersistConfig, pokemonDetailSlice.reducer);
+export const pokemonDetailReducer = persistReducer(detailPersistConfig, pokemonDetailSlice.reducer);

@@ -1,4 +1,5 @@
-export { typeDetailState } from './type-slice';
-export { pokemonState } from './pokemon-slice';
-export { abilityState } from './ability-slice';
-export { pokemonDetailState } from './pokemon-detail-slice';
+export { typeDetailReducer } from './type-detail-slice';
+export { pokemonReducer } from './pokemon-slice';
+export { abilityReducer } from './ability-slice';
+export { pokemonDetailReducer } from './pokemon-detail-slice';
+export { typesReducer } from './type-slice';

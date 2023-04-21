@@ -1,7 +1,6 @@
 @import '../../variables.scss';
 .info-page {
 	padding: 3.375rem 4rem;
-	height: fit-content;
 	@apply relative;
 	@apply grid;
 	@apply grid-cols-2;
@@ -10,6 +9,7 @@
 		@apply flex;
 		@apply flex-col;
 		@apply relative;
+		@apply h-fit;
 		.api-src-issue-msg {
 			color: $color-primary-darker;
 			@apply font-medium;
@@ -20,6 +20,10 @@
 			top: 50%;
 			left: 50%;
 		}
+	}
+
+	.detail-section {
+		@apply h-fit;
 	}
 }
 

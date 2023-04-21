@@ -1,0 +1,11 @@
+.ability-container {
+	@apply flex;
+	@apply flex-row;
+	@apply mt-3;
+	@apply gap-x-8;
+	@apply gap-y-4;
+	@apply justify-center;
+	@apply self-center;
+	@apply flex-wrap;
+	@apply px-10;
+}

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { requestGettingPokemonDetail } from '../../app/reducers/pokemon-detail-slice';
-import { requestGettingTypeDetail } from '../../app/reducers/type-slice';
+import { requestGettingTypeDetail } from '../../app/reducers/type-detail-slice';
 import classes from './search.module.scss';
 export const Search = () => {
 	const [searchValue, setSearchValue] = useState('');

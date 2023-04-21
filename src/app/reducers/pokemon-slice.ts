@@ -65,4 +65,4 @@ export const {
 	errorGettingPokemons
 } = pokemonSlice.actions;
 export const pokemonActions = pokemonSlice.actions;
-export const pokemonState = persistReducer(pokemonPersistConfig, pokemonSlice.reducer);
+export const pokemonReducer = persistReducer(pokemonPersistConfig, pokemonSlice.reducer);

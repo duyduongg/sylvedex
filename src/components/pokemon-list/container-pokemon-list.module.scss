@@ -1,3 +1,41 @@
 @import '../../variables.scss';
 .list-container {
+	.type-filter-section {
+		.open-filter-container-btn {
+			@apply w-fit;
+			color: $color-primary-darker;
+			@apply underline;
+			@apply rounded-xl;
+			@apply mb-4;
+			@apply font-semibold;
+		}
+		.filter-btns-container {
+			@apply flex;
+			@apply flex-row;
+			@apply gap-3;
+			@apply flex-wrap;
+			@apply rounded-xl;
+			.filter-type-btn {
+				@apply w-24;
+				@apply rounded-xl;
+				@apply font-medium;
+				@apply text-white;
+				@apply p-2;
+				@apply mb-2;
+				box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px;
+				transition: transform ease-in-out 0.1s;
+				&.selected,
+				&:hover {
+					box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+						rgba(0, 0, 0, 0.09) 0px 16px 8px;
+					transform: scale(1.1);
+					-webkit-transform: scale(1.1);
+				}
+			}
+
+			.reset {
+				background-color: $color-container-outline-secondary;
+			}
+		}
+	}
 }

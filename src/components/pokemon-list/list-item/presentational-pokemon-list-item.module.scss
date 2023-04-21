@@ -9,7 +9,7 @@
 	@apply flex-col;
 	@apply text-center;
 	@apply w-60;
-
+	transition: transform ease-out 0.2s;
 	color: $color-black;
 	.pokemon-official-art {
 		@apply absolute;
@@ -37,6 +37,11 @@
 			@apply font-medium;
 			@apply text-white;
 		}
+	}
+
+	&:hover {
+		transform: scale(1.1);
+		-webkit-transform: scale(1.1);
 	}
 }
 

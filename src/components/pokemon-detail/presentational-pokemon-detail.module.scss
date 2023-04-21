@@ -28,75 +28,10 @@
 	.pokemon-name {
 		@apply font-bold;
 	}
-	.pokemon-type {
-		@apply self-center;
-		@apply flex;
-		@apply flex-row;
-		@apply justify-self-center;
-		.type {
-			@apply rounded-xl;
-			@apply font-medium;
-			@apply text-white;
-			@apply mx-2;
-		}
-	}
 	.abilities {
 		@apply font-semibold;
 		@apply flex;
 		@apply flex-col;
-		.abilities-container {
-			@apply flex;
-			@apply flex-row;
-			@apply mt-3;
-			@apply gap-x-8;
-			@apply gap-y-4;
-			@apply justify-center;
-			@apply self-center;
-			@apply flex-wrap;
-			@apply px-10;
-			.ability {
-				color: $color-primary-darker;
-				border: 1px solid $color-primary-darker;
-				@apply relative;
-				@apply rounded-full;
-
-				@apply cursor-default;
-				.ability-description {
-					@apply invisible;
-					@apply absolute;
-					transition: opacity 0.3s;
-					top: 125%;
-					left: 50%;
-					margin-left: -60px;
-					@apply text-xs;
-					@apply text-left;
-					min-width: fit-content;
-					@apply p-2;
-					@apply rounded-lg;
-					@apply font-normal;
-					background-color: $color-primary-darker;
-					color: $color-type-text;
-					opacity: 0;
-					&::after {
-						content: '';
-						@apply absolute;
-						bottom: 100%;
-						left: 50%;
-						margin-left: -5px;
-						border-width: 5px;
-						border-style: solid;
-						border-color: transparent transparent $color-primary-darker transparent;
-					}
-				}
-
-				&:hover {
-					.ability-description {
-						@apply visible;
-						opacity: 1;
-					}
-				}
-			}
-		}
 	}
 
 	.label {
@@ -119,25 +54,6 @@
 
 	.stats {
 		@apply w-full;
-		.stats-container {
-			@apply grid;
-			@apply flex-col;
-			.stat-container {
-				@apply my-2;
-				@apply grid;
-				@apply justify-self-center;
-				.numeric-value {
-					@apply grid;
-					@apply font-medium;
-					.stat-name {
-						@apply text-left;
-					}
-				}
-				.chart {
-					@apply rounded-sm;
-				}
-			}
-		}
 	}
 }
 
@@ -171,25 +87,9 @@
 		@apply mb-4;
 	}
 
-	.pokemon-type {
-		@apply mt-4;
-		.type {
-			@apply w-40;
-			@apply text-xl;
-			@apply py-3;
-		}
-	}
-
 	.abilities {
 		@apply mt-8;
 		@apply text-3xl;
-		.abilities-container {
-			.ability {
-				@apply py-2;
-				@apply px-6;
-				min-width: 15rem;
-			}
-		}
 	}
 
 	.label {
@@ -209,22 +109,6 @@
 	.stats {
 		@apply px-20;
 		@apply mt-8;
-		.stats-container {
-			.stat-container {
-				grid-template-columns: 16rem 255px;
-				.numeric-value {
-					@apply grid-cols-5;
-					@apply text-2xl;
-					.stat-name {
-						@apply col-span-4;
-					}
-				}
-
-				.chart {
-					transition: width 150ms ease-in-out;
-				}
-			}
-		}
 	}
 }
 
@@ -258,25 +142,9 @@
 		@apply mb-4;
 	}
 
-	.pokemon-type {
-		@apply mt-4;
-		.type {
-			@apply w-36;
-			@apply text-lg;
-			@apply py-2;
-		}
-	}
-
 	.abilities {
 		@apply text-2xl;
 		@apply mt-6;
-		.abilities-container {
-			.ability {
-				@apply py-1;
-				@apply px-2;
-				min-width: 11rem;
-			}
-		}
 	}
 
 	.label {
@@ -296,18 +164,6 @@
 	.stats {
 		@apply px-10;
 		@apply mt-4;
-		.stats-container {
-			.stat-container {
-				grid-template-columns: 14rem 255px;
-				.numeric-value {
-					@apply grid-cols-12;
-					@apply text-xl;
-					.stat-name {
-						@apply col-span-10;
-					}
-				}
-			}
-		}
 	}
 }
 
@@ -340,25 +196,9 @@
 		@apply text-3xl;
 	}
 
-	.pokemon-type {
-		@apply mt-2;
-		.type {
-			@apply w-32;
-			@apply text-base;
-			@apply py-2;
-		}
-	}
-
 	.abilities {
 		@apply text-xl;
 		@apply mt-2;
-		.abilities-container {
-			.ability {
-				@apply py-1;
-				@apply px-2;
-				min-width: fit-content;
-			}
-		}
 	}
 
 	.label {
@@ -378,18 +218,6 @@
 	.stats {
 		@apply px-5;
 		@apply mt-2;
-		.stats-container {
-			.stat-container {
-				grid-template-columns: 12rem 255px;
-				.numeric-value {
-					@apply grid-cols-12;
-					@apply text-lg;
-					.stat-name {
-						@apply col-span-10;
-					}
-				}
-			}
-		}
 	}
 }
 
@@ -423,24 +251,8 @@
 		@apply mb-1;
 	}
 
-	.pokemon-type {
-		@apply mt-1;
-		.type {
-			@apply w-28;
-			@apply text-sm;
-			@apply py-2;
-		}
-	}
-
 	.abilities {
 		@apply text-lg;
-		.abilities-container {
-			.ability {
-				@apply py-1;
-				@apply px-2;
-				min-width: fit-content;
-			}
-		}
 	}
 
 	.label {
@@ -459,17 +271,5 @@
 
 	.stats {
 		@apply px-5;
-		.stats-container {
-			.stat-container {
-				grid-template-columns: 12rem 255px;
-				.numeric-value {
-					@apply grid-cols-12;
-					@apply text-base;
-					.stat-name {
-						@apply col-span-10;
-					}
-				}
-			}
-		}
 	}
 }

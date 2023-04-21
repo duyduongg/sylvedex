@@ -1,11 +1,11 @@
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { requestGettingPokemonDetail } from '../../app/reducers/pokemon-detail-slice';
-import { PresentationalPokemonDetail } from './presentational-pokemon-detail';
-import classes from './container-pokemon-detail.module.scss';
-import { Spinner } from '../fallback/spinner';
 import { requestGettingAbilities } from '../../app/reducers/ability-slice';
-import { combineAbility, CombinedAbilities } from '../../helpers/helpers';
+import { requestGettingPokemonDetail } from '../../app/reducers/pokemon-detail-slice';
+import { combineAbility, CombinedAbility } from '../../helpers/helpers';
+import { Spinner } from '../fallback/spinner';
+import classes from './container-pokemon-detail.module.scss';
+import { PresentationalPokemonDetail } from './presentational-pokemon-detail';
 
 const ContainerPokemonDetail = () => {
 	const { data, id, isLoading } = useAppSelector((state) => {
@@ -31,7 +31,7 @@ const ContainerPokemonDetail = () => {
 		}
 	}, [data]);
 
-	const [combinedAbilities, setCombinedAbilities] = useState<CombinedAbilities[]>([]);
+	const [combinedAbilities, setCombinedAbilities] = useState<CombinedAbility[]>([]);
 	useEffect(() => {
 		if (data !== undefined && abilities.length !== 0) {
 			setCombinedAbilities(combineAbility(data.abilities, abilities));
@@ -41,7 +41,17 @@ const ContainerPokemonDetail = () => {
 	return (
 		<div className={classes['detail-container']}>
 			{data && !isLoading && abilities.length !== 0 && (
-				<PresentationalPokemonDetail data={data} combinedAbilities={combinedAbilities} />
+				<PresentationalPokemonDetail
+					id={data.id}
+					name={data.name}
+					types={data.types}
+					spriteImage={data.sprites.other['official-artwork']?.front_default}
+					combinedAbilities={combinedAbilities}
+					height={data.height / 10}
+					weight={data.weight / 10}
+					baseExp={data.base_experience}
+					stats={data.stats}
+				/>
 			)}
 			{(!data || isLoading) && (
 				<div className={classes['fallback']}>

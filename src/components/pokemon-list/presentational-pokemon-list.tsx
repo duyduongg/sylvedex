@@ -1,5 +1,5 @@
 import { Pokemon } from '../../models';
-import { PokemonListItem } from './list-item/pokemon-list-item';
+import { ContainerPokemonListItem } from './list-item/container-pokemon-list-item';
 import classes from './presentational-pokemon-list.module.scss';
 
 export interface PresentationalPokemonListProps {
@@ -9,7 +9,7 @@ export const PresentationalPokemonList = ({ pokemons }: PresentationalPokemonLis
 	return (
 		<div className={classes['list']}>
 			{pokemons.map((pokemon) => (
-				<PokemonListItem data={pokemon} key={pokemon.id} />
+				<ContainerPokemonListItem data={pokemon} key={pokemon.id} />
 			))}
 		</div>
 	);

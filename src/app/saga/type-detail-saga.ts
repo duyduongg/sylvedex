@@ -1,9 +1,8 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { all, call, put, take } from 'redux-saga/effects';
-import { NamedApiResource, Pokemon, Type } from '../../models';
+import { Type } from '../../models';
 import { typeService } from '../../services/type-service';
-import { typeDetailActions } from '../reducers/type-slice';
-import { getPokemonsDataFromNamedApiResource, updatePokemonsData } from './pokemon-saga';
+import { typeDetailActions } from '../reducers/type-detail-slice';
 
 function* getTypeDetail(name: string) {
 	try {

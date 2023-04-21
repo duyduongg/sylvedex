@@ -1,4 +1,17 @@
 @import './variables.scss';
+.App {
+	min-height: 100vh;
+	min-width: 100vw;
+	@apply grid;
+	@apply grid-cols-1;
+	grid-template-rows: 96px 1fr;
+	@apply relative;
+}
+
+main {
+	min-width: 0;
+}
+
 .type-normal {
 	background-color: $color-type-normal;
 }
@@ -71,6 +84,80 @@
 	background-color: $color-type-poison;
 }
 
+//
+
+.type-normal-dark {
+	background-color: $color-type-normal-dark;
+}
+
+.type-water-dark {
+	background-color: $color-type-water-dark;
+}
+
+.type-fire-dark {
+	background-color: $color-type-fire-dark;
+}
+
+.type-grass-dark {
+	background-color: $color-type-grass-dark;
+}
+
+.type-electric-dark {
+	background-color: $color-type-electric-dark;
+}
+
+.type-psychic-dark {
+	background-color: $color-type-psychic-dark;
+}
+
+.type-dark-dark {
+	background-color: $color-type-dark-dark;
+}
+
+.type-rock-dark {
+	background-color: $color-type-rock-dark;
+}
+
+.type-ground-dark {
+	background-color: $color-type-ground-dark;
+}
+
+.type-ice-dark {
+	background-color: $color-type-ice-dark;
+}
+
+.type-flying-dark {
+	background-color: $color-type-flying-dark;
+}
+
+.type-fighting-dark {
+	background-color: $color-type-fighting-dark;
+}
+
+.type-fairy-dark {
+	background-color: $color-type-fairy-dark;
+}
+
+.type-ghost-dark {
+	background-color: $color-type-ghost-dark;
+}
+
+.type-dragon-dark {
+	background-color: $color-type-dragon-dark;
+}
+
+.type-steel-dark {
+	background-color: $color-type-steel-dark;
+}
+
+.type-bug-dark {
+	background-color: $color-type-bug-dark;
+}
+
+.type-poison-dark {
+	background-color: $color-type-poison-dark;
+}
+
 .type-none {
 	background-color: $color-container-outline-primary;
 	color: black !important;
@@ -104,17 +191,4 @@
 .stat-speed {
 	background-color: $color-stat-spd-primary;
 	border: 1px solid $color-stat-spd-secondary;
-}
-
-.App {
-	min-height: 100vh;
-	min-width: 100vw;
-	@apply grid;
-	@apply grid-cols-1;
-	grid-template-rows: 96px 1fr;
-	@apply relative;
-}
-
-main {
-	min-width: 0;
 }

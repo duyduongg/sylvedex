@@ -1,17 +1,27 @@
 import { Suspense, useCallback } from 'react';
 import fallback from '../../assets/fallback.svg';
-import { capitalize, CombinedAbilities, format } from '../../helpers/helpers';
-import { Pokemon, Stat } from '../../models';
+import { capitalize, CombinedAbility, format } from '../../helpers/helpers';
+import { Pokemon, PokemonType, Stat } from '../../models';
 import { Spinner } from '../fallback/spinner';
+import { ContainerAbilities } from './ability/container-abilities';
 import classes from './presentational-pokemon-detail.module.scss';
+import { ContainerStats } from './stat/container-stats';
+import { TypesContainer } from './type/container-types';
 export interface PresentationalPokemonDetailProps {
-	data: Pokemon;
-	combinedAbilities: CombinedAbilities[];
+	id: number;
+	name: string;
+	spriteImage?: string;
+	types: PokemonType[];
+	combinedAbilities: CombinedAbility[];
+	height?: number;
+	weight?: number;
+	baseExp?: number;
+	stats: Stat[];
 }
 interface SubInfoSectionProps {
 	label: string;
 	info: number | string;
-	unitMeasurement: string;
+	unitMeasurement?: string;
 }
 const SubInfoSection = ({ label, info, unitMeasurement }: SubInfoSectionProps) => {
 	return (
@@ -25,36 +35,37 @@ const SubInfoSection = ({ label, info, unitMeasurement }: SubInfoSectionProps) =
 	);
 };
 
-export const PresentationalPokemonDetail = ({ data, combinedAbilities }: PresentationalPokemonDetailProps) => {
+export const PresentationalPokemonDetail = ({
+	id,
+	name,
+	spriteImage,
+	types,
+	combinedAbilities,
+	height,
+	weight,
+	baseExp,
+	stats
+}: PresentationalPokemonDetailProps) => {
 	const formatString = useCallback(
 		(str: string) => {
 			return format(str);
 		},
-		[data]
+		[name]
 	);
 
 	const capitalizeString = useCallback(
 		(str: string) => {
 			return capitalize(str);
 		},
-		[data]
+		[name]
 	);
 
-	const getTotalStat = useCallback((stats: Stat[]) => {
-		let a: number[] = [];
-		stats.forEach((stat) => {
-			a.push(stat.base_stat);
-		});
-		return a.reduce((acc, cur) => {
-			return acc + cur;
-		}, 0);
-	}, []);
 	return (
 		<div className={classes['presentational-container']}>
-			{data.sprites.other['official-artwork'].front_default ? (
+			{spriteImage ? (
 				<div className={classes['pokemon-official-artwork']}>
 					<Suspense fallback={<Spinner />}>
-						<img src={data.sprites.other['official-artwork'].front_default} alt={`${data.name}-official-artwork`} />
+						<img src={spriteImage} alt={`${name}-official-artwork`} />
 					</Suspense>
 				</div>
 			) : (
@@ -62,60 +73,21 @@ export const PresentationalPokemonDetail = ({ data, combinedAbilities }: Present
 					<img src={fallback} />
 				</div>
 			)}
-			<div className={classes['pokemon-id']}>#{data.id}</div>
-			<div className={classes['pokemon-name']}>{formatString(capitalizeString(data.name))}</div>
-			<div className={classes['pokemon-type']}>
-				<div className={`type-${data.types[0].type.name} ${classes['type']}`}>
-					{capitalizeString(data.types[0].type.name)}
-				</div>
-				{data.types[1] && (
-					<div className={`type-${data.types[1].type.name} ${classes['type']}  `}>
-						{capitalizeString(data.types[1].type.name)}
-					</div>
-				)}
-			</div>
+			<div className={classes['pokemon-id']}>#{id}</div>
+			<div className={classes['pokemon-name']}>{formatString(capitalizeString(name))}</div>
+			<TypesContainer types={types} format={capitalizeString} />
 			<div className={classes['abilities']}>
 				<div className={classes['label']}>ABILITIES</div>
-				<div className={classes['abilities-container']}>
-					{combinedAbilities.map((ability) => (
-						<div className={classes['ability']} key={ability.name}>
-							{ability.name}
-							<span className={classes['ability-description']}>{ability.description}</span>
-						</div>
-					))}
-				</div>
+				<ContainerAbilities abilities={combinedAbilities} />
 			</div>
 			<div className={classes['sub-info']}>
-				<SubInfoSection label="Height" info={data.height ? data.height / 10 : 'N/A'} unitMeasurement="m" />
-				<SubInfoSection label="Weight" info={data.weight / 10} unitMeasurement="kg" />
-				<SubInfoSection
-					label="Base Exp"
-					info={data.base_experience ? data.base_experience : 'N/A'}
-					unitMeasurement=""
-				/>
+				<SubInfoSection label="Height" info={height || 'N/A'} unitMeasurement="m" />
+				<SubInfoSection label="Weight" info={weight || 'N/A'} unitMeasurement="kg" />
+				<SubInfoSection label="Base Exp" info={baseExp || 'N/A'} />
 			</div>
 			<div className={classes['stats']}>
 				<div className={classes['label']}>STATS ( /255 )</div>
-				<div className={classes['stats-container']}>
-					{data.stats.map((stat, idx) => (
-						<div className={classes['stat-container']} key={idx}>
-							<div className={classes['numeric-value']}>
-								<div className={classes['stat-name']}>{formatString(stat.stat.name)}:</div>
-								<div className={classes['base-stat']}>{stat.base_stat}</div>
-							</div>
-							<div
-								className={`${classes['chart']} stat-${stat.stat.name}`}
-								style={{ width: `calc(100% * (${stat.base_stat} / 255))` }}
-							></div>
-						</div>
-					))}
-					<div className={classes['stat-container']}>
-						<div className={classes['numeric-value']}>
-							<div className={classes['stat-name']}>Total:</div>
-							<div className={classes['base-stat']}>{getTotalStat(data.stats)}</div>
-						</div>
-					</div>
-				</div>
+				<ContainerStats stats={stats} formatString={formatString} />
 			</div>
 		</div>
 	);
