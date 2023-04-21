@@ -2,6 +2,7 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DOTS, usePagination } from '../../hooks/usePagination';
 import classes from './paginator.module.scss';
+import React from 'react';
 interface PaginatorProps {
 	total: number;
 	current: number;
@@ -20,7 +21,7 @@ export const Paginator = ({ total, current, pageSize, onPageChange, siblingCount
 		onPageChange(current - 1);
 	};
 
-	let lastPage = paginationRange![paginationRange!.length - 1];
+	const lastPage = paginationRange![paginationRange!.length - 1];
 
 	return (
 		<div className={classes['paginator']}>

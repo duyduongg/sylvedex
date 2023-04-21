@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { requestGettingPokemons, requestGettingPokemonsFromArray } from '../../app/reducers/pokemon-slice';
 import { clearTypePokemon, requestGettingTypeDetail } from '../../app/reducers/type-detail-slice';
@@ -9,7 +9,7 @@ import { Spinner } from '../fallback/spinner';
 import { Paginator } from '../paginator/paginator';
 import classes from './container-pokemon-list.module.scss';
 import { PresentationalPokemonList } from './presentational-pokemon-list';
-
+import React from 'react';
 const ContainerPokemonList = () => {
 	const dispatch = useAppDispatch();
 

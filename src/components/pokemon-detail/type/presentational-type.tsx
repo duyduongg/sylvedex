@@ -1,4 +1,5 @@
 import classes from './presentational-type.module.scss';
+import React from 'react';
 export interface TypeProps {
 	typeName: string;
 	typeClassStyle: string;

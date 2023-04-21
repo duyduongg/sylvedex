@@ -5,7 +5,7 @@ import { appSelect } from '../hooks';
 import { pokemonActions } from '../reducers/pokemon-slice';
 
 export function* getPokemonsDataFromNamedApiResource(resourceList: NamedApiResource[]) {
-	let idList: string[] = [];
+	const idList: string[] = [];
 	resourceList.map((v: NamedApiResource) =>
 		idList.push(v.url.slice(`${import.meta.env.VITE_API_BASE_URL}/pokemon/`.length - 1, v.url.length - 1))
 	);

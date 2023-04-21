@@ -1,12 +1,13 @@
 import { Suspense, useCallback } from 'react';
 import fallback from '../../assets/fallback.svg';
 import { capitalize, CombinedAbility, format } from '../../helpers/helpers';
-import { Pokemon, PokemonType, Stat } from '../../models';
+import { PokemonType, Stat } from '../../models';
 import { Spinner } from '../fallback/spinner';
 import { ContainerAbilities } from './ability/container-abilities';
 import classes from './presentational-pokemon-detail.module.scss';
 import { ContainerStats } from './stat/container-stats';
 import { TypesContainer } from './type/container-types';
+import React from 'react';
 export interface PresentationalPokemonDetailProps {
 	id: number;
 	name: string;

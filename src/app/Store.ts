@@ -1,5 +1,5 @@
 import createSagaMiddleware from '@redux-saga/core';
-import { Action, AnyAction, configureStore, getDefaultMiddleware, ThunkAction } from '@reduxjs/toolkit';
+import { Action, AnyAction, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';

@@ -20,7 +20,7 @@ function* getAbility(ability: string) {
 function* getAbilities(abilities: string[]) {
 	try {
 		const response: Ability[] = yield all(abilities.map((a) => call(getAbility, a)));
-		let results = response.map((res) => {
+		const results = response.map((res) => {
 			if (res === undefined) {
 				return fallbackAbility;
 			}
@@ -38,7 +38,7 @@ function* getAbilities(abilities: string[]) {
 
 function* getAbilitiesWatcher() {
 	while (true) {
-		let action: PayloadAction<string[]> = yield take(abilityAction.requestGettingAbilities.type);
+		const action: PayloadAction<string[]> = yield take(abilityAction.requestGettingAbilities.type);
 		yield call(getAbilities, action.payload);
 	}
 }

@@ -1,6 +1,7 @@
 import { PokemonType } from '../../../models';
 import { Type } from './presentational-type';
 import classes from './container-types.module.scss';
+import React from 'react';
 export interface TypesContainerProps {
 	types: PokemonType[];
 	format: (str: string) => string;

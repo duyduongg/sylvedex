@@ -21,12 +21,12 @@ export const combineAbility = (resource: AbilityResource[], abilities: Ability[]
 		return [];
 	}
 
-	let abilitiesNames = resource.map((r) => {
+	const abilitiesNames = resource.map((r) => {
 		return {
 			name: format(r.ability.name)
 		};
 	});
-	let abilitiesDescription = abilities.map((r) => {
+	const abilitiesDescription = abilities.map((r) => {
 		return {
 			name: format(r.name),
 			description:

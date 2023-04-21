@@ -7,6 +7,7 @@ import { AbilityResource } from '../../models';
 import { Spinner } from '../fallback/spinner';
 import classes from './container-pokemon-detail.module.scss';
 import { PresentationalPokemonDetail } from './presentational-pokemon-detail';
+import React from 'react';
 
 const ContainerPokemonDetail = () => {
 	const { data, id, isLoading } = useAppSelector((state) => {

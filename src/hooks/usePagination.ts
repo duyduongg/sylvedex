@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 
 const range = (start: number, end: number) => {
-	let length = end - start + 1;
+	const length = end - start + 1;
 	return Array.from({ length }, (_, idx) => idx + start);
 };
 export const DOTS = '...';
-export const usePagination = (total: number, pageSize: number, siblingCount: number = 1, currentPage: number) => {
+export const usePagination = (total: number, pageSize: number, siblingCount = 1, currentPage: number) => {
 	const paginationRange = useMemo(() => {
 		const totalPageCount = Math.ceil(total / pageSize);
 
@@ -38,8 +38,8 @@ export const usePagination = (total: number, pageSize: number, siblingCount: num
             Only shows right dots 
         */
 		if (!shouldShowLeftDots && shouldShowRightDots) {
-			let leftItemCount = 3 + 2 * siblingCount; // Fixed at 5
-			let leftRange = range(1, leftItemCount); // From 1 to 5
+			const leftItemCount = 3 + 2 * siblingCount; // Fixed at 5
+			const leftRange = range(1, leftItemCount); // From 1 to 5
 			return [...leftRange, DOTS, totalPageCount]; // 1...5, "...", 57
 		}
 		/* 
@@ -47,8 +47,8 @@ export const usePagination = (total: number, pageSize: number, siblingCount: num
             Only shows left dots
         */
 		if (shouldShowLeftDots && !shouldShowRightDots) {
-			let rightItemCount = 3 + 2 * siblingCount; // Fixed at 5
-			let rightRange = range(totalPageCount - rightItemCount + 1, totalPageCount); // From 53 to 57
+			const rightItemCount = 3 + 2 * siblingCount; // Fixed at 5
+			const rightRange = range(totalPageCount - rightItemCount + 1, totalPageCount); // From 53 to 57
 			return [firstPageIndex, DOTS, ...rightRange]; // 1, "...", 56...57
 		}
 
@@ -57,7 +57,7 @@ export const usePagination = (total: number, pageSize: number, siblingCount: num
             Show both left and right dots
         */
 		if (shouldShowLeftDots && shouldShowRightDots) {
-			let middleRange = range(leftSiblingIndex, rightSiblingIndex); // currentPage = 23 -> leftSibling = 22, rightSibling = 24
+			const middleRange = range(leftSiblingIndex, rightSiblingIndex); // currentPage = 23 -> leftSibling = 22, rightSibling = 24
 			return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex]; // 1, "...", 22, 23, 24, "...", 57
 		}
 	}, [total, pageSize, siblingCount, currentPage]);
