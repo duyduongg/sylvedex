@@ -1,2 +1,2 @@
-export { abilityServices } from './ability-service';
-export { pokemonServices } from './pokemon-service';
+export { abilityService } from './ability-service';
+export { pokemonService } from './pokemon-service';
