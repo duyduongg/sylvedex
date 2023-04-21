@@ -1,18 +1,18 @@
 import { all, call, put, take } from 'redux-saga/effects';
-import { NamedApiResource, NamedApiResourceList, Pokemon } from '../../models';
+import { NamedApiResource, NamedApiResourceList, Pokemon, TypePokemon } from '../../models';
 import { pokemonService } from '../../services/pokemon-service';
 import { appSelect } from '../hooks';
 import { pokemonActions } from '../reducers/pokemon-slice';
 
 export function* getPokemonsDataFromNamedApiResource(resourceList: NamedApiResource[]) {
 	let idList: string[] = [];
-	resourceList.map((v) =>
+	resourceList.map((v: NamedApiResource) =>
 		idList.push(v.url.slice(`${import.meta.env.VITE_API_BASE_URL}/pokemon/`.length - 1, v.url.length - 1))
 	);
 	let pokemonList: Pokemon[] = [];
 
 	pokemonList = yield all(
-		idList.map((id) => {
+		idList.map((id: string) => {
 			return call(pokemonService.getPokemon, id);
 		})
 	);
@@ -74,7 +74,7 @@ function* getPokemonsFromArray() {
 		const state: { limit: number; offset: number } = yield getPaginationState();
 		const pokemons: NamedApiResource[] = [];
 		if (type !== undefined) {
-			type.pokemon.slice(state.offset, state.limit + state.offset).map((t) => pokemons.push(t.pokemon));
+			type.pokemon.slice(state.offset, state.limit + state.offset).map((t: TypePokemon) => pokemons.push(t.pokemon));
 			const pokemonList: Pokemon[] = yield call(getPokemonsDataFromNamedApiResource, pokemons);
 			yield call(updatePokemonsData, pokemonList, type.pokemon.length);
 		}
