@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { requestGettingAbilities } from '../../app/reducers/ability-slice';
 import { requestGettingPokemonDetail } from '../../app/reducers/pokemon-detail-slice';
 import { combineAbility, CombinedAbility } from '../../helpers/helpers';
+import { AbilityResource } from '../../models';
 import { Spinner } from '../fallback/spinner';
 import classes from './container-pokemon-detail.module.scss';
 import { PresentationalPokemonDetail } from './presentational-pokemon-detail';
@@ -27,7 +28,7 @@ const ContainerPokemonDetail = () => {
 
 	useEffect(() => {
 		if (data !== undefined) {
-			dispatch(requestGettingAbilities([...data.abilities.map((a) => a.ability.name)]));
+			dispatch(requestGettingAbilities([...data.abilities.map((a: AbilityResource) => a.ability.name)]));
 		}
 	}, [data]);
 

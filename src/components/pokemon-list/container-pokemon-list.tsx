@@ -4,6 +4,7 @@ import { requestGettingPokemons, requestGettingPokemonsFromArray } from '../../a
 import { clearTypePokemon, requestGettingTypeDetail } from '../../app/reducers/type-detail-slice';
 import { requestGettingTypes } from '../../app/reducers/type-slice';
 import { capitalize } from '../../helpers/helpers';
+import { NamedApiResource } from '../../models';
 import { Spinner } from '../fallback/spinner';
 import { Paginator } from '../paginator/paginator';
 import classes from './container-pokemon-list.module.scss';
@@ -65,7 +66,7 @@ const ContainerPokemonList = () => {
 				</button>
 				{isFilter && (
 					<div className={classes['filter-btns-container']}>
-						{typesList.map((type, idx) => (
+						{typesList.map((type: NamedApiResource, idx: number) => (
 							<button
 								onClick={() => handleSelectType(type.name)}
 								key={idx}
