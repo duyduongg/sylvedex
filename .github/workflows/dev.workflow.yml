@@ -8,12 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: '18'
     steps:
       - uses: actions/checkout@v1
-      - run: npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install
       - run: npm run build
       - uses: ./.github/workflows/dev.workflow.yml
         with:
