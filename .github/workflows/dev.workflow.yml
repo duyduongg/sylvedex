@@ -9,15 +9,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: check out (?)
+        uses: actions/checkout@v3
+      - name: set up node
+        uses: actions/setup-node@v3
         with:
           node-version: '18.x'
           cache: 'npm'
           cache-dependency-path: package-lock.json
-      - run: npm ci
-      - run: npm run build
-      - uses: jakejarvis/s3-sync-action@master
+      - name: install dependencies
+        run: npm ci
+      - name: build project
+        run: npm run build
+      - name: s3 sync action
+        uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
