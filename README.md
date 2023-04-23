@@ -8,5 +8,5 @@ Features available:
   - View Pokémon's detail information.
   - Filter Pokémons by type (1 type each filtering).
 * Further features will be determined after deeper investigating the public API.
-* All of API calls endpoint belong to `https://pokeapi.co/`.
+* All of API calls endpoint belong to `https://pokeapi.co/`.\
 [Demo](http://sylvedex-ci.s3-website-ap-southeast-2.amazonaws.com)
