@@ -2,11 +2,11 @@
 
 A simple pokédex website using React, Redux Toolkit, Redux Saga, Redux Persist, Typescript and TailwindCSS.
 Features available:
-  - List of Pokémon by id. 
-  - Pagination,
+  - List of Pokémon by Id starting from Generation 1 (Kanto) to Generation 9 (Paldea).
+  - Pagination.
   - Search Pokémon by name and id.
   - View Pokémon's detail information.
-* Further features will be determined after deeper investigating public API process.
-# API documentation
-
-- All of API calls endpoint belong to `https://pokeapi.co/`
+  - Filter Pokémons by type (1 type each filtering).
+* Further features will be determined after deeper investigating the public API.
+* All of API calls endpoint belong to `https://pokeapi.co/`.
+[Demo](http://sylvedex-ci.s3-website-ap-southeast-2.amazonaws.com)
