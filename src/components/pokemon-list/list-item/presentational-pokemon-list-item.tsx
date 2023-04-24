@@ -1,7 +1,6 @@
+import fallback from '../../../assets/fallback.svg';
 import { PokemonType } from '../../../models';
 import classes from './presentational-pokemon-list-item.module.scss';
-import fallback from '../../../assets/fallback.svg';
-import React from 'react';
 export interface PresentationalPokemonListItemProps {
 	id: number;
 	spriteImage?: string;

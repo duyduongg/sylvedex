@@ -1,13 +1,12 @@
 import { PokemonType } from '../../../models';
-import { Type } from './presentational-type';
 import classes from './container-types.module.scss';
-import React from 'react';
-export interface TypesContainerProps {
+import { Type } from './presentational-type';
+export interface ContainerTypesProps {
 	types: PokemonType[];
 	format: (str: string) => string;
 }
 
-export const TypesContainer = ({ types, format }: TypesContainerProps) => {
+export const ContainerTypes = ({ types, format }: ContainerTypesProps) => {
 	return (
 		<div className={classes['pokemon-type']}>
 			<Type typeName={format(types[0].type.name)} typeClassStyle={`type-${types[0].type.name}`} />

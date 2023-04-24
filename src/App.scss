@@ -2,10 +2,12 @@
 .App {
 	min-height: 100vh;
 	min-width: 100vw;
-	@apply grid;
-	@apply grid-cols-1;
-	grid-template-rows: 96px 1fr;
+	@apply flex;
 	@apply relative;
+	@apply flex-col;
+	main {
+		@apply flex;
+	}
 }
 
 main {

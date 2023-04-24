@@ -1,17 +1,16 @@
-import { Suspense, useCallback } from 'react';
-import fallback from '../../assets/fallback.svg';
+import { useCallback } from 'react';
 import { capitalize, CombinedAbility, format } from '../../helpers/helpers';
 import { PokemonType, Stat } from '../../models';
-import { Spinner } from '../fallback/spinner';
+import { OfficialArtwork } from '../../models/sprite';
 import { ContainerAbilities } from './ability/container-abilities';
 import classes from './presentational-pokemon-detail.module.scss';
+import { ContainerSprites } from './sprite/container-sprites';
 import { ContainerStats } from './stat/container-stats';
-import { TypesContainer } from './type/container-types';
-import React from 'react';
+import { ContainerTypes } from './type/container-types';
 export interface PresentationalPokemonDetailProps {
 	id: number;
 	name: string;
-	spriteImage?: string;
+	spriteImages: OfficialArtwork;
 	types: PokemonType[];
 	combinedAbilities: CombinedAbility[];
 	height?: number;
@@ -39,7 +38,7 @@ const SubInfoSection = ({ label, info, unitMeasurement }: SubInfoSectionProps) =
 export const PresentationalPokemonDetail = ({
 	id,
 	name,
-	spriteImage,
+	spriteImages,
 	types,
 	combinedAbilities,
 	height,
@@ -63,20 +62,10 @@ export const PresentationalPokemonDetail = ({
 
 	return (
 		<div className={classes['presentational-container']}>
-			{spriteImage ? (
-				<div className={classes['pokemon-official-artwork']}>
-					<Suspense fallback={<Spinner />}>
-						<img src={spriteImage} alt={`${name}-official-artwork`} />
-					</Suspense>
-				</div>
-			) : (
-				<div className={classes['fallback-img']}>
-					<img src={fallback} />
-				</div>
-			)}
+			<ContainerSprites spriteImages={spriteImages} />
 			<div className={classes['pokemon-id']}>#{id}</div>
 			<div className={classes['pokemon-name']}>{formatString(capitalizeString(name))}</div>
-			<TypesContainer types={types} format={capitalizeString} />
+			<ContainerTypes types={types} format={capitalizeString} />
 			<div className={classes['abilities']}>
 				<div className={classes['label']}>ABILITIES</div>
 				<ContainerAbilities abilities={combinedAbilities} />

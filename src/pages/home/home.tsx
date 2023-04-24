@@ -1,14 +1,10 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import background from '../../assets/background.svg';
 import mascot from '../../assets/mascot.png';
 import classes from './home.module.scss';
 export const Home = () => {
 	return (
 		<div className={classes['home']}>
-			<div className={classes['background-overlay']}>
-				<img src={background} />
-			</div>
+			<div className={classes['background-overlay']}>{/* <img src={background} /> */}</div>
 			<div className={classes['landing-page']}>
 				<div className={classes['intro-texts']}>
 					<h1 className={classes['intro']}>A simple self-made pokémons index</h1>

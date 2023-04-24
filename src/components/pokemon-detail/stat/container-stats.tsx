@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 import { Stat } from '../../../models';
-import { PresentationalStat } from './presentational-stat';
 import classes from './container-stats.module.scss';
-import React from 'react';
+import { PresentationalStat } from './presentational-stat';
 export interface ContainerStatsProps {
 	stats: Stat[];
 	formatString: (str: string) => string;

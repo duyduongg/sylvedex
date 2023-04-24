@@ -5,7 +5,6 @@ import { capitalize, format } from '../../../helpers/helpers';
 import { Pokemon, PokemonType } from '../../../models';
 import classes from './container-pokemon-list-item.module.scss';
 import { PresentationalPokemonListItem } from './presentational-pokemon-list-item';
-import React from 'react';
 export interface ContainerPokemonListItemProps {
 	data: Pokemon;
 }

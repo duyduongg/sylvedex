@@ -1,9 +1,10 @@
 @import '../../variables.scss';
 header {
 	background: linear-gradient(90deg, $color-primary 0%, $color-secondary 75.34%, $color-primary 98.48%);
-	box-sizing: border-box;
 	@apply z-10;
 	@apply relative;
+	@apply h-min;
+	flex: 0 1 auto;
 	&.main {
 		background: transparent;
 	}
@@ -13,14 +14,11 @@ header {
 	.content {
 		font-family: 'Montserrat';
 		color: $color-primary-darker;
-		padding: 1.5rem 0 1.5rem 3rem;
-		font-size: 1.5em;
 		@apply font-semibold;
 		@apply flex;
 		@apply flex-row;
 		@apply items-center;
 		.nav-links {
-			@apply ml-8;
 			@apply flex;
 			@apply flex-row;
 			a {
@@ -29,11 +27,9 @@ header {
 				&::before {
 					content: '';
 					@apply absolute;
-					height: 3px;
-					bottom: -30px;
-					left: 50%;
 					margin: 0 auto;
 					@apply w-0;
+					left: 50%;
 					height: 3px;
 					background-color: $color-primary-darker;
 					transform: translate(-50%, 0);
@@ -42,8 +38,8 @@ header {
 				&.active,
 				&:hover {
 					&::before {
-						width: calc(100% + 20px);
 						transform-origin: center;
+						width: calc(100% + 20px);
 					}
 				}
 			}
@@ -51,29 +47,126 @@ header {
 				@apply flex;
 				@apply flex-row;
 				@apply items-center;
-				span:first-child {
-					margin-right: 4px;
-				}
 			}
 		}
 	}
 	.social-links {
 		@apply absolute;
 		right: 0;
-		@apply mr-20;
 		@apply flex;
 		@apply flex-row;
 		@apply self-center;
 		vertical-align: middle;
 		.social-link {
-			margin: 0 1rem 0 1rem;
-			width: 24px;
 			height: auto;
 			transition: transform 150ms ease-in-out;
-			&:hover {
-				transform: scale(1.25);
-				-ms-transform: scale(1.25);
-				-webkit-transform: scale(1.25);
+		}
+	}
+}
+
+@media (min-width: 1720px) {
+	header {
+		.content {
+			padding: 1.5rem 0 1.5rem 3rem;
+			font-size: 1.5em;
+			.nav-links {
+				@apply ml-8;
+				a {
+					@apply mx-8;
+					&::before {
+						bottom: -30px;
+					}
+				}
+			}
+		}
+		.social-links {
+			@apply mr-20;
+			.social-link {
+				margin: 0 1rem 0 1rem;
+				width: 24px;
+				&:hover {
+					transform: scale(1.25);
+					-ms-transform: scale(1.25);
+					-webkit-transform: scale(1.25);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1719px) {
+	header {
+		.content {
+			padding: 1rem 0 1rem 3rem;
+			font-size: 1.25em;
+			.nav-links {
+				@apply ml-6;
+				a {
+					@apply mx-8;
+					&::before {
+						bottom: -25px;
+					}
+				}
+			}
+		}
+
+		.social-links {
+			@apply mr-20;
+			.social-link {
+				margin: 0 1rem 0 1rem;
+				width: 24px;
+				&:hover {
+					transform: scale(1.25);
+					-ms-transform: scale(1.25);
+					-webkit-transform: scale(1.25);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1480px) {
+	header {
+		.logo {
+			transform: scale(0.8);
+			-ms-transform: scale(0.8);
+			-webkit-transform: scale(0.8);
+		}
+	}
+}
+
+@media (max-width: 1280px) {
+	header {
+		.logo {
+			transform: scale(0.7);
+			-ms-transform: scale(07);
+			-webkit-transform: scale(0.7);
+		}
+
+		.content {
+			padding: 0.5rem 0 0.5rem 3rem;
+			font-size: 1em;
+			.nav-links {
+				@apply ml-6;
+				a {
+					@apply mx-8;
+					&::before {
+						bottom: -20px;
+					}
+				}
+			}
+		}
+
+		.social-links {
+			@apply mr-20;
+			.social-link {
+				margin: 0 1rem 0 1rem;
+				width: 24px;
+				&:hover {
+					transform: scale(1.25);
+					-ms-transform: scale(1.25);
+					-webkit-transform: scale(1.25);
+				}
 			}
 		}
 	}

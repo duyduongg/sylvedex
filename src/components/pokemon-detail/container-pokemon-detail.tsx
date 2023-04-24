@@ -7,7 +7,6 @@ import { AbilityResource } from '../../models';
 import { Spinner } from '../fallback/spinner';
 import classes from './container-pokemon-detail.module.scss';
 import { PresentationalPokemonDetail } from './presentational-pokemon-detail';
-import React from 'react';
 
 const ContainerPokemonDetail = () => {
 	const { data, id, isLoading } = useAppSelector((state) => {
@@ -47,7 +46,7 @@ const ContainerPokemonDetail = () => {
 					id={data.id}
 					name={data.name}
 					types={data.types}
-					spriteImage={data.sprites.other['official-artwork']?.front_default}
+					spriteImages={data.sprites.other['official-artwork']}
 					combinedAbilities={combinedAbilities}
 					height={data.height / 10}
 					weight={data.weight / 10}
