@@ -1,10 +1,12 @@
 export interface OtherSprites {
 	other: {
-		'official-artwork': {
-			front_default: string;
-			front_shiny: string;
-		};
+		'official-artwork': OfficialArtwork;
 	};
+}
+
+export interface OfficialArtwork {
+	front_default: string;
+	front_shiny: string;
 }
 
 export type Sprite = {

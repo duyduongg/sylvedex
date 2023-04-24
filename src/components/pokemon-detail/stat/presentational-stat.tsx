@@ -1,5 +1,4 @@
 import classes from './presentational-stat.module.scss';
-import React from 'react';
 export interface PresentationalStatProps {
 	isTotalStat: boolean;
 	statName: string;

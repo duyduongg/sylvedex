@@ -4,12 +4,12 @@ import { requestGettingPokemons, requestGettingPokemonsFromArray } from '../../a
 import { clearTypePokemon, requestGettingTypeDetail } from '../../app/reducers/type-detail-slice';
 import { requestGettingTypes } from '../../app/reducers/type-slice';
 import { capitalize } from '../../helpers/helpers';
+import { useOnMountTransition } from '../../hooks';
 import { NamedApiResource } from '../../models';
 import { Spinner } from '../fallback/spinner';
 import { Paginator } from '../paginator/paginator';
 import classes from './container-pokemon-list.module.scss';
 import { PresentationalPokemonList } from './presentational-pokemon-list';
-import React from 'react';
 const ContainerPokemonList = () => {
 	const dispatch = useAppDispatch();
 
@@ -20,6 +20,7 @@ const ContainerPokemonList = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [selectedType, setSelectedType] = useState<string | undefined>(undefined);
 	const [isFilter, setIsFilter] = useState(false);
+	const hasTransitionIn = useOnMountTransition(isFilter, 500);
 
 	useEffect(() => {
 		dispatch(requestGettingTypes());
@@ -35,7 +36,7 @@ const ContainerPokemonList = () => {
 
 	useEffect(() => {
 		if (selectedType !== undefined) {
-			dispatch(requestGettingTypeDetail(selectedType!));
+			dispatch(requestGettingTypeDetail(selectedType));
 		} else {
 			dispatch(clearTypePokemon());
 		}
@@ -64,8 +65,12 @@ const ContainerPokemonList = () => {
 				<button className={classes['open-filter-container-btn']} onClick={() => setIsFilter((isFilter) => !isFilter)}>
 					Filter by type +
 				</button>
-				{isFilter && (
-					<div className={classes['filter-btns-container']}>
+				{(hasTransitionIn || isFilter) && (
+					<div
+						className={`${classes['filter-btns-container']} ${hasTransitionIn && classes['in']} ${
+							isFilter && classes['visible']
+						}`}
+					>
 						{typesList.map((type: NamedApiResource, idx: number) => (
 							<button
 								onClick={() => handleSelectType(type.name)}

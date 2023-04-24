@@ -15,6 +15,13 @@
 			@apply gap-3;
 			@apply flex-wrap;
 			@apply rounded-xl;
+			transform: translateY(-30px);
+			opacity: 0;
+			transition: opacity 500ms ease, transform 500ms ease;
+			&.visible.in {
+				opacity: 1;
+				transform: translateY(0);
+			}
 			.filter-type-btn {
 				@apply w-24;
 				@apply rounded-xl;

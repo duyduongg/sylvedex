@@ -1,0 +1,113 @@
+@import '../../../variables.scss';
+.sprite {
+	@apply flex;
+	@apply flex-col;
+	.pokemon-official-artwork {
+		@apply w-fit;
+		@apply h-fit;
+		& img {
+			@apply mx-auto;
+			@apply h-auto;
+		}
+	}
+
+	.fallback-img {
+		& img {
+			@apply mx-auto;
+			@apply h-auto;
+		}
+	}
+	.label {
+		@apply text-2xl;
+		@apply font-semibold;
+		color: $color-primary-darker;
+		@apply w-fit;
+		@apply flex;
+		@apply m-auto;
+	}
+}
+
+@media (min-width: 1720px) {
+	.sprite {
+		.pokemon-official-artwork {
+			& img {
+				transform: scale(0.8);
+				-ms-transform: scale(0.8);
+				-webkit-transform: scale(0.8);
+			}
+		}
+		.fallback-img {
+			top: 6rem;
+			top: -35%;
+			& img {
+				transform: scale(1.5);
+				-ms-transform: scale(1.5);
+				-webkit-transform: scale(1.5);
+			}
+		}
+	}
+}
+
+@media (max-width: 1719px) {
+	.sprite {
+		.pokemon-official-artwork {
+			& img {
+				transform: scale(0.9);
+				-ms-transform: scale(0.9);
+				-webkit-transform: scale(0.9);
+			}
+		}
+		.fallback-img {
+			top: -40%;
+			& img {
+				transform: scale(1.3);
+				-ms-transform: scale(1.3);
+				-webkit-transform: scale(1.3);
+			}
+		}
+	}
+}
+
+@media (max-width: 1480px) {
+	.sprite {
+		.pokemon-official-artwork {
+			& img {
+				transform: scale(0.8);
+				-ms-transform: scale(0.8);
+				-webkit-transform: scale(0.8);
+			}
+		}
+		.fallback-img {
+			top: -40%;
+			& img {
+				transform: scale(1.1);
+				-ms-transform: scale(1.1);
+				-webkit-transform: scale(1.1);
+			}
+		}
+		.label {
+			@apply text-lg;
+		}
+	}
+}
+
+@media (max-width: 1280px) {
+	.sprite {
+		.pokemon-official-artwork {
+			top: -65%;
+			& img {
+				transform: scale(0.7);
+				-ms-transform: scale(0.7);
+				-webkit-transform: scale(0.7);
+			}
+		}
+		.fallback-img {
+			top: -45%;
+			& img {
+				transform: scale(1.2);
+				-ms-transform: scale(1.2);
+				-webkit-transform: scale(1.2);
+			}
+		}
+	}
+}
