@@ -20,7 +20,7 @@ export const Header = () => {
 					<NavLink
 						to="/pokemons"
 						className={({ isActive, isPending }) =>
-							isPending ? `${classes['pending']}` : isActive ? `${classes['active']}}` : ''
+							isPending ? `${classes['pending']}` : isActive ? `${classes['active']}` : ''
 						}
 					>
 						<span>List Pokémons</span>

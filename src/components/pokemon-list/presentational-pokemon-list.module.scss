@@ -1,4 +1,6 @@
 .list {
 	@apply grid;
 	@apply grid-cols-3;
+	@apply gap-x-10;
+	@apply gap-y-5;
 }

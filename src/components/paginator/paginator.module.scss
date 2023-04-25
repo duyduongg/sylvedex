@@ -13,10 +13,9 @@
 	color: $color-primary-darker;
 	.page-change-btn {
 		@apply cursor-pointer;
-
+		@apply px-3;
 		&.previous {
 			border-right: 1px solid $color-container-outline-primary;
-			@apply px-3;
 			.icon {
 				@apply mr-2;
 			}
@@ -24,7 +23,6 @@
 
 		&.next {
 			border-left: 1px solid $color-container-outline-primary;
-			@apply px-3;
 			.icon {
 				@apply ml-2;
 			}

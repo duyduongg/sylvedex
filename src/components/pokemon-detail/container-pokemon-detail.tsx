@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { requestGettingAbilities } from '../../app/reducers/ability-slice';
-import { requestGettingPokemonDetail } from '../../app/reducers/pokemon-detail-slice';
+import { requestGettingPokemonDetail, setCurrentDetailId } from '../../app/reducers/pokemon-detail-slice';
+import { POKEMON_ID_LIMIT } from '../../constants';
 import { combineAbility, CombinedAbility } from '../../helpers/helpers';
+import { useOnMountTransition } from '../../hooks';
 import { AbilityResource } from '../../models';
 import { Spinner } from '../fallback/spinner';
 import classes from './container-pokemon-detail.module.scss';
@@ -16,6 +18,7 @@ const ContainerPokemonDetail = () => {
 			isLoading: state.pokemonDetailState.isLoading
 		};
 	});
+
 	const { abilities } = useAppSelector((state) => {
 		return { abilities: state.abilityState.data };
 	});
@@ -39,6 +42,13 @@ const ContainerPokemonDetail = () => {
 		}
 	}, [abilities, data]);
 
+	const handleChangeViewDataId = (offset: number) => {
+		const nextId = id + offset;
+		if (nextId <= POKEMON_ID_LIMIT) {
+			dispatch(setCurrentDetailId(nextId));
+		}
+	};
+
 	return (
 		<div className={classes['detail-container']}>
 			{data && !isLoading && abilities.length !== 0 && (
@@ -52,6 +62,7 @@ const ContainerPokemonDetail = () => {
 					weight={data.weight / 10}
 					baseExp={data.base_experience}
 					stats={data.stats}
+					onIdChangeHandler={handleChangeViewDataId}
 				/>
 			)}
 			{(!data || isLoading) && (

@@ -5,15 +5,17 @@ import fallback from '../../../assets/fallback.svg';
 export interface PresentationalSpriteProps {
 	label: string;
 	url?: string;
+	isLoaded: boolean;
+	onImageLoadedHandler: () => void;
 }
 
-export const PresentationalSprite = ({ label, url }: PresentationalSpriteProps) => {
+export const PresentationalSprite = ({ label, url, isLoaded, onImageLoadedHandler }: PresentationalSpriteProps) => {
 	return (
 		<div className={classes['sprite']}>
 			{url ? (
 				<div className={classes['pokemon-official-artwork']}>
 					<Suspense fallback={<Spinner />}>
-						<img src={url} alt={`${label}-official-artwork`} />
+						<img src={url} alt={`${label.toLowerCase()}-official-artwork`} onLoad={onImageLoadedHandler} />
 					</Suspense>
 				</div>
 			) : (
@@ -21,7 +23,9 @@ export const PresentationalSprite = ({ label, url }: PresentationalSpriteProps) 
 					<img src={fallback} />
 				</div>
 			)}
-			<span className={classes['label']}>{label}</span>
+			{(isLoaded || url === null) && (
+				<span className={`${classes['label']} ${url === null && classes['fallback-label']}`}>{label}</span>
+			)}
 		</div>
 	);
 };

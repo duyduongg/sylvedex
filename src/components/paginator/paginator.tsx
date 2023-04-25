@@ -10,7 +10,7 @@ interface PaginatorProps {
 	onPageChange: (currentPage: number) => void;
 	siblingCount?: number;
 }
-export const Paginator = ({ total, current, pageSize, onPageChange, siblingCount = 1 }: PaginatorProps) => {
+export const Paginator = ({ total, current, pageSize, onPageChange, siblingCount = 4 }: PaginatorProps) => {
 	const paginationRange = usePagination(total, pageSize, siblingCount, current);
 
 	const onNextPage = () => {
@@ -34,7 +34,7 @@ export const Paginator = ({ total, current, pageSize, onPageChange, siblingCount
 				<FontAwesomeIcon icon={faChevronLeft} className={classes['icon']} />
 				<span>Previous</span>
 			</div>
-			{paginationRange!.map((pageNumber, idx) => {
+			{paginationRange?.map((pageNumber, idx) => {
 				if (pageNumber === DOTS) {
 					return <span key={idx}>&#8230;</span>;
 				}
