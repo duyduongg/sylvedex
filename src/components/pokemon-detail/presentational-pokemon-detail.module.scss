@@ -9,9 +9,26 @@
 		color: $color-container-outline-secondary;
 		@apply font-medium;
 	}
-	.pokemon-name {
-		@apply font-bold;
+	.sub-container {
+		@apply relative;
+		@apply w-full;
+		@apply flex;
+		@apply flex-row;
+		@apply justify-between;
+		.pokemon-name {
+			@apply font-bold;
+		}
+		.action-btn {
+			@apply cursor-pointer;
+			@apply self-center;
+			transition: transform ease-in 200ms;
+			&.disabled {
+				@apply pointer-events-none;
+				@apply opacity-50;
+			}
+		}
 	}
+
 	.abilities {
 		@apply font-semibold;
 		@apply flex;
@@ -47,10 +64,25 @@
 			@apply text-2xl;
 			@apply mt-10;
 		}
+		.sub-container {
+			.pokemon-name {
+				@apply text-5xl;
+				@apply mb-4;
+			}
+			.action-btn {
+				$scale: 2;
+				.icon {
+					transform: scale($scale);
+					-webkit-transform: scale($scale);
+					-ms-transform: scale($scale);
+				}
 
-		.pokemon-name {
-			@apply text-5xl;
-			@apply mb-4;
+				&:hover {
+					transform: scale(calc($scale * 0.7));
+					-webkit-transform: scale(calc($scale * 0.7));
+					-ms-transform: scale(calc($scale * 0.7));
+				}
+			}
 		}
 
 		.abilities {
@@ -86,9 +118,18 @@
 			@apply mt-10;
 		}
 
-		.pokemon-name {
-			@apply text-4xl;
-			@apply mb-4;
+		.sub-container {
+			.pokemon-name {
+				@apply text-4xl;
+				@apply mb-4;
+			}
+			.action-btn {
+				.icon {
+					transform: scale(1.5);
+					-webkit-transform: scale(1.5);
+					-ms-transform: scale(1.5);
+				}
+			}
 		}
 
 		.abilities {
@@ -124,8 +165,17 @@
 			@apply mt-4;
 		}
 
-		.pokemon-name {
-			@apply text-3xl;
+		.sub-container {
+			.pokemon-name {
+				@apply text-3xl;
+			}
+			.action-btn {
+				.icon {
+					transform: scale(1.2);
+					-webkit-transform: scale(1.2);
+					-ms-transform: scale(1.2);
+				}
+			}
 		}
 
 		.abilities {
@@ -160,9 +210,19 @@
 			@apply text-base;
 		}
 
-		.pokemon-name {
-			@apply text-2xl;
-			@apply mb-1;
+		.sub-container {
+			@apply justify-evenly;
+			.pokemon-name {
+				@apply text-2xl;
+				@apply mb-1;
+			}
+			.action-btn {
+				.icon {
+					transform: scale(1);
+					-webkit-transform: scale(1);
+					-ms-transform: scale(1);
+				}
+			}
 		}
 
 		.abilities {

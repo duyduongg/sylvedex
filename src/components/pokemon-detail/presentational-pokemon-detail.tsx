@@ -1,10 +1,13 @@
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback } from 'react';
+import { POKEMON_ID_LIMIT } from '../../constants';
 import { capitalize, CombinedAbility, format } from '../../helpers/helpers';
 import { PokemonType, Stat } from '../../models';
 import { OfficialArtwork } from '../../models/sprite';
 import { ContainerAbilities } from './ability/container-abilities';
 import classes from './presentational-pokemon-detail.module.scss';
-import { ContainerSprites } from './sprite/container-sprites';
+import { PresentationalSprites } from './sprite/presentational-sprites';
 import { ContainerStats } from './stat/container-stats';
 import { ContainerTypes } from './type/container-types';
 export interface PresentationalPokemonDetailProps {
@@ -17,6 +20,7 @@ export interface PresentationalPokemonDetailProps {
 	weight?: number;
 	baseExp?: number;
 	stats: Stat[];
+	onIdChangeHandler: (offset: number) => void;
 }
 interface SubInfoSectionProps {
 	label: string;
@@ -44,7 +48,8 @@ export const PresentationalPokemonDetail = ({
 	height,
 	weight,
 	baseExp,
-	stats
+	stats,
+	onIdChangeHandler
 }: PresentationalPokemonDetailProps) => {
 	const formatString = useCallback(
 		(str: string) => {
@@ -62,9 +67,23 @@ export const PresentationalPokemonDetail = ({
 
 	return (
 		<div className={classes['presentational-container']}>
-			<ContainerSprites spriteImages={spriteImages} />
+			<PresentationalSprites spriteImages={spriteImages} />
 			<div className={classes['pokemon-id']}>#{id}</div>
-			<div className={classes['pokemon-name']}>{formatString(capitalizeString(name))}</div>
+			<div className={classes['sub-container']}>
+				<div
+					className={`${classes['action-btn']} ${id === 1 && classes['disabled']}`}
+					onClick={() => onIdChangeHandler(-1)}
+				>
+					<FontAwesomeIcon icon={faChevronLeft} className={classes['icon']} />
+				</div>
+				<div className={classes['pokemon-name']}>{formatString(capitalizeString(name))}</div>
+				<div
+					className={`${classes['action-btn']} ${id >= POKEMON_ID_LIMIT && classes['disabled']}`}
+					onClick={() => onIdChangeHandler(1)}
+				>
+					<FontAwesomeIcon icon={faChevronRight} className={classes['icon']} />
+				</div>
+			</div>
 			<ContainerTypes types={types} format={capitalizeString} />
 			<div className={classes['abilities']}>
 				<div className={classes['label']}>ABILITIES</div>

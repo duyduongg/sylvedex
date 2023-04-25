@@ -30,14 +30,12 @@ export const ContainerPokemonListItem = ({ data }: ContainerPokemonListItemProps
 		[data]
 	);
 	return (
-		<div className={classes['item-mask']}>
-			<PresentationalPokemonListItem
-				id={data.id}
-				name={formatString(capitalizeString(data.name))}
-				types={formatTypesName(data.types)}
-				spriteImage={data.sprites.other['official-artwork']?.front_default}
-				onItemSelectHandler={handleItemClicked}
-			/>
-		</div>
+		<PresentationalPokemonListItem
+			id={data.id}
+			name={formatString(capitalizeString(data.name))}
+			types={formatTypesName(data.types)}
+			spriteImage={data.sprites.other['official-artwork']?.front_default}
+			onItemSelectHandler={handleItemClicked}
+		/>
 	);
 };
