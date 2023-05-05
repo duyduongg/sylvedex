@@ -1,6 +1,7 @@
-export interface NamedApiResource {
+import { ApiResource } from './api-resource';
+
+export interface NamedApiResource extends ApiResource {
 	name: string;
-	url: string;
 }
 
 export const fallbackNamedApiResource: NamedApiResource = {

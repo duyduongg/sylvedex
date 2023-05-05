@@ -1,13 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { Pokemon } from '../../models';
+import { EvolutionChain, Pokemon, PokemonSpecies } from '../../models';
 
 import { baseSliceInitialState, BaseSliceState } from '../base-slice-state';
 
+export interface NestedRelatedPokemon {
+	pokemon: Pokemon;
+	related: NestedRelatedPokemon[];
+}
 interface PokemonDetailState extends BaseSliceState {
 	pokemonData?: Pokemon;
 	id: number;
+	species?: PokemonSpecies;
+	evolutionChain?: EvolutionChain;
+	nestedRelatedPokemons: NestedRelatedPokemon[];
 }
 
 const pokemonDetailSlice = createSlice({
@@ -15,6 +22,9 @@ const pokemonDetailSlice = createSlice({
 	initialState: {
 		...baseSliceInitialState,
 		pokemonData: undefined,
+		species: undefined,
+		evolutionChain: undefined,
+		nestedRelatedPokemons: [],
 		id: 1
 	} as PokemonDetailState,
 	reducers: {
@@ -34,21 +44,33 @@ const pokemonDetailSlice = createSlice({
 		},
 		setCurrentDetailId(state, action: PayloadAction<number>) {
 			state.id = action.payload;
+		},
+		setSpecies(state, action: PayloadAction<PokemonSpecies>) {
+			state.species = action.payload;
+		},
+		setEvolutionChain(state, action: PayloadAction<EvolutionChain>) {
+			state.evolutionChain = action.payload;
+		},
+		setRelatedPokemons(state, action: PayloadAction<NestedRelatedPokemon[]>) {
+			state.nestedRelatedPokemons = action.payload;
 		}
 	}
 });
 
-export const detailPersistConfig = {
+const pokemonDetailPersistConfig = {
 	key: 'pokemon-detail',
 	storage,
-	whitelist: ['pokemonData', 'id']
+	whitelist: ['evolutionChain', 'nestedRelatedPokemons']
 };
 
 export const {
 	requestGettingPokemonDetail,
 	completeGettingPokemonDetail,
 	errorGettingPokemonDetail,
-	setCurrentDetailId
+	setCurrentDetailId,
+	setSpecies,
+	setEvolutionChain,
+	setRelatedPokemons
 } = pokemonDetailSlice.actions;
 export const pokemonDetailActions = pokemonDetailSlice.actions;
-export const pokemonDetailReducer = persistReducer(detailPersistConfig, pokemonDetailSlice.reducer);
+export const pokemonDetailReducer = persistReducer(pokemonDetailPersistConfig, pokemonDetailSlice.reducer);

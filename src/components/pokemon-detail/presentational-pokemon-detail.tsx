@@ -1,11 +1,13 @@
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback } from 'react';
+import { NestedRelatedPokemon } from '../../app/reducers/pokemon-detail-slice';
 import { POKEMON_ID_LIMIT } from '../../constants';
-import { capitalize, CombinedAbility, format } from '../../helpers/helpers';
+import { capitalize, CombinedAbility, format } from '../../helpers';
 import { PokemonType, Stat } from '../../models';
-import { OfficialArtwork } from '../../models/sprite';
+import { OfficialArtwork } from '../../models/pokemon/sprite';
 import { ContainerAbilities } from './ability/container-abilities';
+import { PresentationalEvolutionChain } from './evolution/presentational-evolution-chain';
 import classes from './presentational-pokemon-detail.module.scss';
 import { PresentationalSprites } from './sprite/presentational-sprites';
 import { ContainerStats } from './stat/container-stats';
@@ -20,7 +22,9 @@ export interface PresentationalPokemonDetailProps {
 	weight?: number;
 	baseExp?: number;
 	stats: Stat[];
-	onIdChangeHandler: (offset: number) => void;
+	evolutionChain: NestedRelatedPokemon[];
+	onIdChangeHandler: (id: number, isForward?: boolean) => void;
+	formatString: (str: string) => string;
 }
 interface SubInfoSectionProps {
 	label: string;
@@ -49,42 +53,32 @@ export const PresentationalPokemonDetail = ({
 	weight,
 	baseExp,
 	stats,
-	onIdChangeHandler
+	evolutionChain,
+	onIdChangeHandler,
+	formatString
 }: PresentationalPokemonDetailProps) => {
-	const formatString = useCallback(
-		(str: string) => {
-			return format(str);
-		},
-		[name]
-	);
-
-	const capitalizeString = useCallback(
-		(str: string) => {
-			return capitalize(str);
-		},
-		[name]
-	);
-
 	return (
 		<div className={classes['presentational-container']}>
 			<PresentationalSprites spriteImages={spriteImages} />
 			<div className={classes['pokemon-id']}>#{id}</div>
 			<div className={classes['sub-container']}>
 				<div
-					className={`${classes['action-btn']} ${id === 1 && classes['disabled']}`}
-					onClick={() => onIdChangeHandler(-1)}
+					className={`${classes['action-btn']} ${id === 1 && classes['disabled']} ${classes['backward-btn']}`}
+					onClick={() => onIdChangeHandler(-1, false)}
 				>
 					<FontAwesomeIcon icon={faChevronLeft} className={classes['icon']} />
 				</div>
-				<div className={classes['pokemon-name']}>{formatString(capitalizeString(name))}</div>
+				<div className={classes['pokemon-name']}>{name}</div>
 				<div
-					className={`${classes['action-btn']} ${id >= POKEMON_ID_LIMIT && classes['disabled']}`}
-					onClick={() => onIdChangeHandler(1)}
+					className={`${classes['action-btn']} ${id >= POKEMON_ID_LIMIT && classes['disabled']} ${
+						classes['forward-btn']
+					}`}
+					onClick={() => onIdChangeHandler(1, true)}
 				>
 					<FontAwesomeIcon icon={faChevronRight} className={classes['icon']} />
 				</div>
 			</div>
-			<ContainerTypes types={types} format={capitalizeString} />
+			<ContainerTypes types={types} format={formatString} />
 			<div className={classes['abilities']}>
 				<div className={classes['label']}>ABILITIES</div>
 				<ContainerAbilities abilities={combinedAbilities} />
@@ -97,6 +91,13 @@ export const PresentationalPokemonDetail = ({
 			<div className={classes['stats']}>
 				<div className={classes['label']}>STATS ( /255 )</div>
 				<ContainerStats stats={stats} formatString={formatString} />
+			</div>
+			<div className={classes['evolution-chain']}>
+				<PresentationalEvolutionChain
+					chain={evolutionChain}
+					formatString={formatString}
+					onIdChangeHandler={onIdChangeHandler}
+				/>
 			</div>
 		</div>
 	);

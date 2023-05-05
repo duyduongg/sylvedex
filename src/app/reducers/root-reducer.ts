@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { abilityReducer, pokemonDetailReducer, pokemonReducer, typeDetailReducer, typesReducer } from '.';
+import { abilityReducer, pokemonDetailReducer, pokemonsReducer, typeDetailReducer, typesReducer } from '.';
 
 export const rootReducer = combineReducers({
-	pokemonState: pokemonReducer,
+	pokemonsState: pokemonsReducer,
 	pokemonDetailState: pokemonDetailReducer,
 	abilityState: abilityReducer,
 	typeDetailState: typeDetailReducer,

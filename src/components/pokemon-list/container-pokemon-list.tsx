@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { requestGettingPokemons, requestGettingPokemonsFromArray } from '../../app/reducers/pokemon-slice';
 import { clearTypePokemon, requestGettingTypeDetail } from '../../app/reducers/type-detail-slice';
 import { requestGettingTypes } from '../../app/reducers/type-slice';
-import { capitalize } from '../../helpers/helpers';
+import { capitalize } from '../../helpers';
 import { useOnMountTransition } from '../../hooks';
 import { NamedApiResource } from '../../models';
 import { Spinner } from '../fallback/spinner';
@@ -13,7 +13,7 @@ import { PresentationalPokemonList } from './presentational-pokemon-list';
 const ContainerPokemonList = () => {
 	const dispatch = useAppDispatch();
 
-	const { list, total, limit } = useAppSelector((state) => state.pokemonState);
+	const { list, total, limit } = useAppSelector((state) => state.pokemonsState);
 	const typesList = useAppSelector((state) => state.typesState.types);
 	const type = useAppSelector((state) => state.typeDetailState.typeData);
 

@@ -1,24 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
-import { Pokemon } from '../../models/pokemon';
+import { Pokemon } from '../../models';
 import { baseSliceInitialState, BaseSliceState } from '../base-slice-state';
-interface PokemonState extends BaseSliceState {
+interface PokemonsState extends BaseSliceState {
 	limit: number;
 	offset: number;
 	list: Pokemon[];
 	total: number;
 }
 
-const initialState: PokemonState = {
+const initialState: PokemonsState = {
 	...baseSliceInitialState,
 	list: [],
 	limit: 12,
 	offset: 0,
 	total: 0
 };
-const pokemonSlice = createSlice({
-	name: 'pokemon',
+const pokemonsSlice = createSlice({
+	name: 'pokemons',
 	initialState,
 	reducers: {
 		requestGettingPokemons(state, action: PayloadAction<number | undefined>) {
@@ -52,8 +52,8 @@ const pokemonSlice = createSlice({
 	}
 });
 
-const pokemonPersistConfig = {
-	key: 'pokemon',
+const pokemonsPersistConfig = {
+	key: 'pokemons',
 	storage,
 	whitelist: ['list', 'offset', 'total']
 };
@@ -63,6 +63,6 @@ export const {
 	requestGettingPokemonsFromArray,
 	completeGettingPokemons,
 	errorGettingPokemons
-} = pokemonSlice.actions;
-export const pokemonActions = pokemonSlice.actions;
-export const pokemonReducer = persistReducer(pokemonPersistConfig, pokemonSlice.reducer);
+} = pokemonsSlice.actions;
+export const pokemonsActions = pokemonsSlice.actions;
+export const pokemonsReducer = persistReducer(pokemonsPersistConfig, pokemonsSlice.reducer);

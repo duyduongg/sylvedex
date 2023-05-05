@@ -44,4 +44,5 @@ export const detailPersistConfig = {
 export const { requestGettingTypeDetail, completeGettingTypeDetail, failedGettingTypeDetail, clearTypePokemon } =
 	typeDetailSlice.actions;
 export const typeDetailActions = typeDetailSlice.actions;
-export const typeDetailReducer = persistReducer(detailPersistConfig, typeDetailSlice.reducer);
+// export const typeDetailReducer = persistReducer(detailPersistConfig, typeDetailSlice.reducer);
+export const typeDetailReducer = typeDetailSlice.reducer;

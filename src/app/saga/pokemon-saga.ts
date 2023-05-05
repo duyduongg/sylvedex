@@ -1,8 +1,9 @@
 import { all, call, put, take } from 'redux-saga/effects';
+import { PERSIST_STORE_KEY } from '../../constants';
 import { NamedApiResource, NamedApiResourceList, Pokemon, TypePokemon } from '../../models';
 import { pokemonService } from '../../services/pokemon-service';
 import { appSelect } from '../hooks';
-import { pokemonActions } from '../reducers/pokemon-slice';
+import { pokemonsActions } from '../reducers/pokemon-slice';
 
 export function* getPokemonsDataFromNamedApiResource(resourceList: NamedApiResource[]) {
 	const idList: string[] = [];
@@ -20,15 +21,15 @@ export function* getPokemonsDataFromNamedApiResource(resourceList: NamedApiResou
 }
 
 export function* updatePokemonsData(data: Pokemon[], total: number) {
-	yield put(pokemonActions.completeGettingPokemons([data, total]));
+	yield put(pokemonsActions.completeGettingPokemons([data, total]));
 }
 
 function* getPaginationState() {
 	const state = yield* appSelect((state) => {
 		return {
-			limit: state.pokemonState.limit,
-			offset: state.pokemonState.offset,
-			total: state.pokemonState.total
+			limit: state.pokemonsState.limit,
+			offset: state.pokemonsState.offset,
+			total: state.pokemonsState.total
 		};
 	});
 	return state;
@@ -38,7 +39,7 @@ function* getPokemons() {
 	try {
 		const state: { limit: number; offset: number; total: number } = yield getPaginationState();
 		const type = yield* appSelect((state) => state.typeDetailState.typeData);
-		const localStorageState = JSON.parse(localStorage.getItem('persist:pokemon') || '');
+		const localStorageState = JSON.parse(localStorage.getItem(`persist:${PERSIST_STORE_KEY.POKEMONS}`) || '');
 
 		// Refetch if: Change page, first time fetching
 		if (
@@ -54,16 +55,16 @@ function* getPokemons() {
 		}
 	} catch (err) {
 		if (err instanceof Error) {
-			yield put(pokemonActions.errorGettingPokemons(err.message));
+			yield put(pokemonsActions.errorGettingPokemons(err.message));
 		} else {
-			yield put(pokemonActions.errorGettingPokemons('An error occured when fetching pokemons list'));
+			yield put(pokemonsActions.errorGettingPokemons('An error occured when fetching pokemons list'));
 		}
 	}
 }
 
 function* getPokemonsWatcher() {
 	while (true) {
-		yield take(pokemonActions.requestGettingPokemons.type);
+		yield take(pokemonsActions.requestGettingPokemons.type);
 		yield call(getPokemons);
 	}
 }
@@ -89,7 +90,7 @@ function* getPokemonsFromArray() {
 
 function* getPokemonsFromArrayWatcher() {
 	while (true) {
-		yield take(pokemonActions.requestGettingPokemonsFromArray);
+		yield take(pokemonsActions.requestGettingPokemonsFromArray);
 		yield call(getPokemonsFromArray);
 	}
 }
