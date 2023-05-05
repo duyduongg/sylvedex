@@ -1,4 +1,4 @@
-import { Effect, fallbackEffect } from '.';
+import { Effect, fallbackEffect } from '..';
 
 export interface VerboseAbilityEffect extends Effect {
 	short_effect: string;

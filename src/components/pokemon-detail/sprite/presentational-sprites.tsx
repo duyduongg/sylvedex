@@ -1,4 +1,4 @@
-import { OfficialArtwork } from '../../../models/sprite';
+import { OfficialArtwork } from '../../../models/pokemon/sprite';
 import { ContainerSprite } from './container-sprite';
 import classes from './presentational-sprites.module.scss';
 export interface PresentationalSpritesProps {

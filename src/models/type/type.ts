@@ -1,4 +1,4 @@
-import { BaseEntity, NamedApiResource } from '.';
+import { BaseEntity, NamedApiResource } from '..';
 
 export interface Type extends BaseEntity {
 	damage_relations: TypeRelations;

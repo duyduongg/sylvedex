@@ -1,0 +1,31 @@
+@import '../../../variables.scss';
+.evolution-container {
+	@apply flex;
+	&.evolution-grid {
+		@apply grid;
+		@apply grid-cols-4;
+		@apply gap-y-2;
+	}
+	.evolution-link {
+		@apply rounded-lg;
+		@apply flex;
+		.link-info {
+			@apply self-center;
+			@apply grid;
+			@apply w-fit;
+			& span {
+				@apply w-fit;
+				@apply justify-self-center;
+			}
+			.evolution-artwork {
+				@apply w-1/2;
+				@apply justify-self-center;
+			}
+		}
+
+		.icon {
+			@apply self-center;
+			@apply m-2;
+		}
+	}
+}

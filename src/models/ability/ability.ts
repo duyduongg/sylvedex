@@ -4,7 +4,7 @@ import {
 	fallbackAbilityEffectChange,
 	fallbackVerboseAbilityEffect,
 	VerboseAbilityEffect
-} from '.';
+} from '..';
 
 export interface Ability extends BaseEntity {
 	name: string;

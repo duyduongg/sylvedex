@@ -1,4 +1,4 @@
-import { fallbackNamedApiResource, NamedApiResource } from '.';
+import { fallbackNamedApiResource, NamedApiResource } from '..';
 
 export interface Effect {
 	effect: string;

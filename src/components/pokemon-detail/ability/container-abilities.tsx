@@ -1,4 +1,4 @@
-import { CombinedAbility } from '../../../helpers/helpers';
+import { CombinedAbility } from '../../../helpers';
 import classes from './container-abilities.module.scss';
 import { PresentationalAbility } from './presentational-ability';
 import React from 'react';

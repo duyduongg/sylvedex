@@ -2,26 +2,15 @@
 	@apply inline-flex;
 	@apply flex-row;
 	@apply w-full;
-	@apply absolute;
-	top: -45%;
 	@apply justify-evenly;
+	@apply -mt-60;
 	&.fallback {
-		top: -35%;
+		@apply -mt-32;
 	}
 }
 
 @media (max-width: 1480px) {
 	.container-sprites {
-		&.fallback {
-			top: -42.5%;
-		}
-	}
-}
-
-@media (max-width: 1280px) {
-	.container-sprites {
-		&.fallback {
-			top: -45%;
-		}
+		@apply -mt-40;
 	}
 }

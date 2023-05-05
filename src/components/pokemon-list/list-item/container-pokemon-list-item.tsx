@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useAppDispatch } from '../../../app/hooks';
 import { setCurrentDetailId } from '../../../app/reducers/pokemon-detail-slice';
-import { capitalize, format } from '../../../helpers/helpers';
+import { capitalize, format } from '../../../helpers';
 import { Pokemon, PokemonType } from '../../../models';
 import classes from './container-pokemon-list-item.module.scss';
 import { PresentationalPokemonListItem } from './presentational-pokemon-list-item';

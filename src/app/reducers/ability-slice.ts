@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/lib/persistReducer';
 import storage from 'redux-persist/lib/storage';
-import { Ability } from '../../models/ability';
+import { Ability } from '../../models';
 import { baseSliceInitialState, BaseSliceState } from '../base-slice-state';
 
 interface AbilitySlice extends BaseSliceState {
@@ -40,4 +40,5 @@ const abilityPersistConfig = {
 
 export const { requestGettingAbilities, completeGettingAbilities, errorGettingAbilities } = abilitySlice.actions;
 export const abilityAction = abilitySlice.actions;
-export const abilityReducer = persistReducer(abilityPersistConfig, abilitySlice.reducer);
+// export const abilityReducer = persistReducer(abilityPersistConfig, abilitySlice.reducer);
+export const abilityReducer = abilitySlice.reducer;

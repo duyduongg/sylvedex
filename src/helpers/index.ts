@@ -39,3 +39,8 @@ export const combineAbility = (resource: AbilityResource[], abilities: Ability[]
 	abilitiesDescription.forEach((item) => map.set(item.name, { ...map.get(item.name), ...item }));
 	return Array.from(map.values()) as CombinedAbility[];
 };
+
+export const extractIdFromNamedApiResource = (url: string): string => {
+	const splittedUrl = url.split('/');
+	return splittedUrl[splittedUrl.length - 2];
+};
