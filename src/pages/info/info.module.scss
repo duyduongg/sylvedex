@@ -1,20 +1,23 @@
 @import '../../variables.scss';
 .info-page {
-	padding: 3.375rem 4rem;
 	@apply relative;
 	@apply grid;
-	@apply grid-cols-2;
+	padding: 3.375rem 4rem;
+
+	.search-section {
+		.api-src-issue-msg {
+			color: $color-primary-darker;
+			@apply font-medium;
+			@apply mb-4;
+		}
+	}
 
 	.list-section {
 		@apply flex;
 		@apply flex-col;
 		@apply relative;
 		@apply h-fit;
-		.api-src-issue-msg {
-			color: $color-primary-darker;
-			@apply font-medium;
-			@apply mb-4;
-		}
+
 		.fallback {
 			@apply absolute;
 			top: 50%;
@@ -24,6 +27,16 @@
 
 	.detail-section {
 		@apply h-fit;
+	}
+}
+
+@media (min-width: 1025px) {
+	.info-page {
+		@apply grid-cols-2;
+		grid-template-rows: 1fr max-content;
+		.detail-section {
+			@apply row-span-2;
+		}
 	}
 }
 
@@ -76,5 +89,23 @@
 		.detail-section {
 			@apply mt-20;
 		}
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	.info-page {
+		padding: 2rem 1rem;
+		.list-section {
+			.api-src-issue-msg {
+				@apply text-xs;
+				@apply mb-2;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.into-page {
+		padding: 3.375rem 4rem;
 	}
 }

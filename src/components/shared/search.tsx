@@ -4,7 +4,6 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { requestGettingPokemonDetail } from '../../app/reducers/pokemon-detail-slice';
 import classes from './search.module.scss';
-import React from 'react';
 export const Search = () => {
 	const [searchValue, setSearchValue] = useState('');
 	const dispatch = useAppDispatch();

@@ -2,7 +2,8 @@
 	@apply inline-flex;
 	@apply flex-row;
 	@apply w-full;
-	@apply justify-evenly;
+	@apply justify-center;
+	@apply gap-x-16;
 	@apply -mt-60;
 	&.fallback {
 		@apply -mt-32;

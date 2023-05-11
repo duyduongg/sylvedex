@@ -28,17 +28,18 @@
 }
 
 @media (min-width: 1720px) {
+	$height: 3.5rem;
 	.search-bar {
 		@apply mb-6;
 		.search-form {
 			.search-input {
-				height: 3.5rem;
+				height: $height;
 				text-indent: 2rem;
 				font-size: 1.2em;
 			}
 			.search-btn {
 				padding: 0.8rem 3rem;
-				height: 3.5rem;
+				height: $height;
 				@apply text-2xl;
 			}
 		}
@@ -46,17 +47,18 @@
 }
 
 @media (max-width: 1719px) {
+	$height: 3rem;
 	.search-bar {
 		@apply mb-4;
 		.search-form {
 			.search-input {
-				height: 3rem;
+				height: $height;
 				text-indent: 1.5rem;
 				@apply text-base;
 			}
 			.search-btn {
 				padding: 0.8rem 2.5rem;
-				height: 3rem;
+				height: $height;
 				@apply text-xl;
 			}
 		}
@@ -64,17 +66,18 @@
 }
 
 @media (max-width: 1480px) {
+	$height: 2.5rem;
 	.search-bar {
 		@apply mb-4;
 		.search-form {
 			.search-input {
-				height: 2.5rem;
+				height: $height;
 				text-indent: 1.5rem;
 				@apply text-base;
 			}
 			.search-btn {
 				padding: 0 2rem;
-				height: 2.5rem;
+				height: $height;
 				@apply text-xl;
 			}
 		}
@@ -89,6 +92,20 @@
 			}
 			.search-btn {
 				@apply text-base;
+			}
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.search-bar {
+		.search-form {
+			.search-input {
+				height: 2rem;
+				@apply text-xs;
+			}
+			.search-btn {
+				height: 2rem;
 			}
 		}
 	}
