@@ -3,24 +3,24 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { requestGettingPokemons, requestGettingPokemonsFromArray } from '../../app/reducers/pokemon-slice';
 import { clearTypePokemon, requestGettingTypeDetail } from '../../app/reducers/type-detail-slice';
 import { requestGettingTypes } from '../../app/reducers/type-slice';
-import { capitalize } from '../../helpers';
-import { useOnMountTransition } from '../../hooks';
-import { NamedApiResource } from '../../models';
+import { useOnMountTransition, useSiblingCount } from '../../hooks';
 import { Spinner } from '../fallback/spinner';
 import { Paginator } from '../paginator/paginator';
 import classes from './container-pokemon-list.module.scss';
 import { PresentationalPokemonList } from './presentational-pokemon-list';
+import { ContainerTypeFilter } from './type-filter/container-type-filter';
 const ContainerPokemonList = () => {
 	const dispatch = useAppDispatch();
 
 	const { list, total, limit } = useAppSelector((state) => state.pokemonsState);
-	const typesList = useAppSelector((state) => state.typesState.types);
+
 	const type = useAppSelector((state) => state.typeDetailState.typeData);
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const [selectedType, setSelectedType] = useState<string | undefined>(undefined);
 	const [isFilter, setIsFilter] = useState(false);
 	const hasTransitionIn = useOnMountTransition(isFilter, 500);
+	const siblingCount = useSiblingCount(4);
 
 	useEffect(() => {
 		dispatch(requestGettingTypes());
@@ -66,31 +66,13 @@ const ContainerPokemonList = () => {
 					Filter by type +
 				</button>
 				{(hasTransitionIn || isFilter) && (
-					<div
-						className={`${classes['filter-btns-container']} ${hasTransitionIn && classes['in']} ${
-							isFilter && classes['visible']
-						}`}
-					>
-						{typesList.map((type: NamedApiResource, idx: number) => (
-							<button
-								onClick={() => handleSelectType(type.name)}
-								key={idx}
-								className={`type-${type.name} ${classes['filter-type-btn']} ${
-									selectedType === type.name ? classes['selected'] : ''
-								}`}
-							>
-								{capitalize(type.name)}
-							</button>
-						))}
-						<button
-							onClick={reset}
-							className={`${classes['filter-type-btn']} ${classes['reset']} ${
-								selectedType === undefined ? classes['selected'] : ''
-							}`}
-						>
-							All
-						</button>
-					</div>
+					<ContainerTypeFilter
+						hasTransitionIn={hasTransitionIn}
+						isFilter={isFilter}
+						resetFilter={reset}
+						selectTypeHandler={handleSelectType}
+						selectedType={selectedType}
+					/>
 				)}
 			</div>
 
@@ -101,6 +83,7 @@ const ContainerPokemonList = () => {
 					total={total}
 					pageSize={limit}
 					onPageChange={(page) => handlePageChange(page)}
+					siblingCount={siblingCount}
 				/>
 			)}
 		</div>

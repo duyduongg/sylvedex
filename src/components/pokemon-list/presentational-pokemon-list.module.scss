@@ -4,3 +4,17 @@
 	@apply gap-x-10;
 	@apply gap-y-5;
 }
+
+@media (max-width: 1024px) {
+	.list {
+		@apply gap-x-0;
+	}
+}
+
+@media (max-width: 768px) {
+	.list {
+		@apply mt-4;
+		@apply gap-x-2;
+		@apply gap-y-10;
+	}
+}

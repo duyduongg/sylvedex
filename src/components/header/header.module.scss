@@ -171,3 +171,29 @@ header {
 		}
 	}
 }
+
+@media (max-width: 768px) {
+	header {
+		.social-links {
+			@apply mr-10;
+		}
+	}
+}
+
+@media (max-width: 640px) {
+	header {
+		.content {
+			padding: 0.5rem 0 0.5rem 1rem;
+			@apply text-sm;
+			.nav-links {
+				@apply ml-2;
+				a {
+					@apply mx-4;
+					&::before {
+						bottom: -22px;
+					}
+				}
+			}
+		}
+	}
+}

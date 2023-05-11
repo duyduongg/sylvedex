@@ -63,3 +63,25 @@
 		@apply text-sm;
 	}
 }
+
+@media (max-width: 1024px) {
+	.paginator {
+		@apply text-xs;
+
+		.page-change-btn {
+			@apply px-2;
+			@apply flex;
+			@apply flex-row;
+			&.previous {
+				.icon {
+					@apply self-center;
+				}
+			}
+			&.next {
+				.icon {
+					@apply self-center;
+				}
+			}
+		}
+	}
+}

@@ -1,9 +1,8 @@
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useCallback } from 'react';
 import { NestedRelatedPokemon } from '../../app/reducers/pokemon-detail-slice';
 import { POKEMON_ID_LIMIT } from '../../constants';
-import { capitalize, CombinedAbility, format } from '../../helpers';
+import { CombinedAbility } from '../../helpers';
 import { PokemonType, Stat } from '../../models';
 import { OfficialArtwork } from '../../models/pokemon/sprite';
 import { ContainerAbilities } from './ability/container-abilities';
@@ -93,6 +92,7 @@ export const PresentationalPokemonDetail = ({
 				<ContainerStats stats={stats} formatString={formatString} />
 			</div>
 			<div className={classes['evolution-chain']}>
+				<div className={classes['label']}>EVOLUTION</div>
 				<PresentationalEvolutionChain
 					chain={evolutionChain}
 					formatString={formatString}
