@@ -13,3 +13,7 @@ Features available:
 * Further features will be determined after deeper investigating the public API.
 * All of API calls endpoint belong to `https://pokeapi.co/`.\
 [Demo](http://sylvedex-ci.s3-website-ap-southeast-2.amazonaws.com)
+
+## Update
+### April 24, 2025
+This project has been put into idle state due to lack of development time
